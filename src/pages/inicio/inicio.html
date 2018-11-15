@@ -1,0 +1,70 @@
+
+<ion-content class="container bg-light" >
+	<div class="container">
+		<div class="container display-4 mt-5 pt-5" align="center">
+		Atenas
+			<br>
+			<ion-icon name="person" item-start></ion-icon>
+		</div>
+		<div class="px-4 py-3">
+			<form [formGroup]="formularioUsuario" (ngSubmit)="irLogin1()">
+				<ion-list>
+					<!--Input email-->
+					<ion-item>
+					    <ion-icon name="mail" item-start></ion-icon>
+					    <ion-label stacked>Email:</ion-label>
+					    <ion-input formControlName="email" type="email" placeholder="email" name="email"></ion-input>
+        			</ion-item>
+			        <ion-item *ngIf="formularioUsuario.get('email').errors && formularioUsuario.get('email').dirty" class="error">
+			          <p color="danger" *ngIf="formularioUsuario.get('email').hasError('required')" class="error">
+			            El correo es requerido.
+			          </p>
+			          <p *ngIf="formularioUsuario.get('email').hasError('email')" class="error">
+			            El correo electronico indicado no es valido.
+			          </p>
+			      </ion-item>
+				  <!--Input email-->
+					   <!--Input password-->				  	    	 
+		        <ion-item>
+		          <ion-icon name="eye" item-start></ion-icon>
+		          <ion-label stacked>Contraseña:</ion-label>
+		          <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+		        </ion-item>
+		         <ion-item *ngIf="formularioUsuario.get('password').errors && formularioUsuario.get('password').dirty" class="error">			         
+					    <p *ngIf="formularioUsuario.get('password').hasError('password')" class="error">
+					    El correo electronico indicado no es valido.
+					     </p>
+				</ion-item>
+				<!--Input password-->
+				</ion-list>						
+			
+			<div align="right">		
+				<!-- <button ion-button clear (click)="irResetPassword()">Recuperar contraseña?</button>--->
+				<a href="https://blog.ng-classroom.com/blog/ionic2/forms-with-ionic/">Recuperar contraseña</a>
+			</div>
+			<div class="mt-2" align="center">
+			  <button ion-button round  [disabled]="!formularioUsuario.valid"  >Entrar</button>
+			</div>
+			</form>
+		</div>
+	
+		
+		<!--
+		<div align="center" >
+			<button ion-button icon-start round color="danger">
+			 <ion-icon name="mail"></ion-icon>
+			  Gmail
+			</button>
+		</div>
+			-->		
+		<div class="container h-25">
+			<div class="row">
+			<h6>Aun no tienes cuenta?</h6>
+		 	<button ion-button  clear (click)="irCrearCuenta()">Crear cuenta  {{lowercase}}</button>
+			</div>
+		</div>
+
+	</div>
+
+</ion-content>
+

@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar align="center">
+    <ion-title>biblioteca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  	<ion-list>
+    <!--*ngFor="let animal of animales; let i = index"--->
+    <ion-item-sliding >
+   
+  <ion-item >
+      <ion-avatar item-start>
+
+      </ion-avatar>
+      <h2 >EP1.doc</h2>
+      <button ion-button (click)="downloadandpdf()"> descarga</button>
+    </ion-item>
+    <ion-item-options side="right">
+            <button ion-button color="danger"
+                    (click)="borrar_animal()">
+              <ion-icon name="trash"></ion-icon>
+              Borrar
+            </button>
+    </ion-item-options>
+
+</ion-item-sliding>
+  </ion-list>
+
+</ion-content>

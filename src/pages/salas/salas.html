@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+<h1 align="center">Salas</h1>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+
+
+
+<ion-card *ngFor="let pregun of mutantes" (click)="irSala(pregun)">
+  <ion-item>
+    
+    <h1>{{pregun.nombre}}</h1>    
+  </ion-item>
+
+  <img src="img/advance-card-bttf.png">
+
+  <ion-card-content>
+  <h2>{{pregun.poder}}</h2>
+  </ion-card-content>
+
+   
+</ion-card>
+   <ion-fab bottom right >
+ <button ion-fab mini (click)="addSala()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+</ion-content>
