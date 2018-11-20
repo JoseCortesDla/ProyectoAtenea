@@ -6,6 +6,7 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PcPage } from './pc';
 import { ForoProvider } from '../../providers/api/foro';
 import { PerfilPage } from '../perfil/perfil';
+import { PerfilProvider } from '../../providers/api/perfil';
 
 @Component({
   selector: 'page-foro',
@@ -20,7 +21,8 @@ export class ForoPage {
             public navCtrl: NavController,
             public userService: ApiProvider,
             private _us:ApiProvider,
-            private _fp:ForoProvider
+            private _fp:ForoProvider,
+            private _pp:PerfilProvider
             ) {     
     this.pet='Preguntas';
     this._fp.allpre();
@@ -40,8 +42,9 @@ export class ForoPage {
     this.navCtrl.push(ComentariosPage)
   }
 
-  perfil(us:any){
-    this.navCtrl.push(PerfilPage,{us})
+  perfil(us:string){
+    this._pp.infous(us);
+    this.navCtrl.push(PerfilPage)
 
   }
 

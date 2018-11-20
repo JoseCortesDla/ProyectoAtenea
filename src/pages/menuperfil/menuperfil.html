@@ -17,31 +17,21 @@
 
 	<ion-item >
       <ion-avatar item-start>
-       <img (click)="perfil()" src="assets/imgs/images.jpg">
+       <img (click)="perfil(_us.me.nick)" src="assets/imgs/images.jpg">
       </ion-avatar>
-      <h2 (click)="perfil()">Chifu</h2>
+      <h2 (click)="perfil(_us.me.nick)">Chifu</h2>
       <p>email</p>
     </ion-item>
 
 <ion-list>
-  <ion-item>
+  <ion-item *ngFor="let cat of _fp.cafa">
     <ion-icon name="leaf" item-start></ion-icon>
-      Interes1
-    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="leaf" item-start></ion-icon>
-      Interes2
-    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="leaf" item-start></ion-icon>
-      Interes3
+      {{cat}}
     
   </ion-item>
   <ion-item (click)="acerca()">
-    <ion-icon name="medical" item-start ></ion-icon>
-      Acerca de    
+    <ion-icon name="archive" item-start></ion-icon>
+      Acerca de
   </ion-item>
   <ion-item (click)="_us.cerrar_sesion()">
     <ion-icon name="archive" item-start></ion-icon>

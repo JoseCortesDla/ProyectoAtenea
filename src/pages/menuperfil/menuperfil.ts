@@ -6,7 +6,8 @@ import { InicioPage } from '../inicio/inicio';
 import { AcercaPage } from './acerca';
 import {ApiProvider} from  '../../providers/api/api';
 import { EmailComposer } from '@ionic-native/email-composer';
-
+import { ForoProvider  } from '../../providers/api/foro';
+import { PerfilProvider  } from '../../providers/api/perfil';
 @Component({
   selector: 'page-menuperfil',
   templateUrl: 'menuperfil.html',
@@ -17,15 +18,17 @@ export class MenuperfilPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               private _us:ApiProvider,
+              private _fp:ForoProvider,
+              private _pp:PerfilProvider,
               private email:EmailComposer) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuperfilPage');
   }
-  	perfil(){
-      let us=this._us.me;
-  		this.navCtrl.push(PerfilPage,{us})
+  	perfil(nick:string){      
+      this._pp.infous(nick);
+  		this.navCtrl.push(PerfilPage)
   	}
 
     cerrar_sesion(){

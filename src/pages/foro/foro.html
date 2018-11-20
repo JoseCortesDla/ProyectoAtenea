@@ -23,7 +23,7 @@
   <ion-list *ngSwitchCase="'Preguntas'">
     <ion-item *ngFor="let pregun of _fp.preguntas" >
       <ion-avatar item-start>
-    <ion-icon name="person" md (click)=perfil(pregun.user)></ion-icon>        
+    <ion-icon name="person" md (click)=perfil(pregun.user.nick)></ion-icon>        
       </ion-avatar>
       <h2>{{pregun.user.name}}</h2>
       <p>{{pregun.titulo}}</p>

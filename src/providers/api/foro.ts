@@ -14,7 +14,8 @@ token:string;
   constructor(
               public http: Http,              
               public alert:AlertController,
-              private _us:ApiProvider) {
+              private _us:ApiProvider
+              ) {
     this.allpre();
     this.categorias();
   }
@@ -42,6 +43,8 @@ token:string;
 }
 
 categoria:any[]=[];
+catefa:any[]=[];
+cafa:any[]=[];
 categorias(){
   let headers= new Headers();  
   headers.append('Content-Type','application/json');  
@@ -52,9 +55,18 @@ let url=URL+"categorias";
 return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{    
-              this.categoria=data.categorias;
+              this.categoria=data.categorias;              
+              this.catefa=data.catfavs;
             // this.categoria.push(...data.categorias.data);             
-             console.log(this.categoria);             
+
+            for (var i = this.categoria.length - 1; i >= 0; i--) {
+                 for (var i = this.catefa.length - 1; i >= 0; i--) {
+                   if (this.categoria[i].id==this.catefa[i]) {
+                     this.cafa.push(this.categoria[i].nombre);
+                   }
+                 }
+            }
+             console.log(this.cafa);             
             })
 }
    

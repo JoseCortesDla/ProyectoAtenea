@@ -18,12 +18,12 @@
 
 	<div align="center">
    <img [src]="user.foto"> 
-   <h1>{{user.name}}</h1>
+   <h1>{{_pp.userInfo.name}}</h1>
    <p>
-     {{user.lema}}
+     {{_pp.userInfo.lema}}
    </p>
     
-       <button ion-button clear  *ngIf="_us.me.email==user.email" (click)="mperfil()">
+       <button ion-button clear  *ngIf="_us.me.email==_pp.userInfo.email" (click)="mperfil()">
         Editar
       </button>
    <ion-segment [(ngModel)]="pet">
@@ -39,129 +39,59 @@
   <ion-list *ngSwitchCase="'Informacion'">
      <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      {{user.email}}
+      {{_pp.userInfo.email}}
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      {{user.apellidoM}}
+      {{_pp.userInfo.apellidoP}}
     
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      {{user.apellidop}}
-    
+      {{_pp.userInfo.apellidoM}}  
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      {{user.nick}}
-    
+      {{_pp.userInfo.nick}}    
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      {{user.bio}}
-    
+      {{_pp.userInfo.biografia}}    
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-     Se unio el {{user.creat_at}}
-    
+     Se unio el {{_pp.userInfo.created_at}}    
   </ion-item>
   </ion-list>
-
-  <ion-list *ngSwitchCase="'Intereses'">
-     <ion-item>
+  <ion-list *ngSwitchCase="'Intereses'">   
+  <ion-item *ngFor="let cat of _pp.usercat">       
     <ion-icon name="leaf" item-start></ion-icon>
-      Interes1
-    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="leaf" item-start></ion-icon>
-      Interes2
-    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="leaf" item-start></ion-icon>
-      Interes3
-    
-  </ion-item>
+    {{cat.nombre}}    
+  </ion-item>                                                                               
   </ion-list>
   </div>
   <div>
-      <ion-card>
-
+  <ion-grid *ngFor="let user of _pp.userpre">
+<ion-row>
+  <ion-card>
   <ion-item>
     <ion-avatar item-start>
   <img src="assets/imgs/logo.png">    
     </ion-avatar>
-    <h2 (click)="perfil()">Luis</h2>
-    <p>Julio 5, 2018</p>
+    <h2 (click)="perfil()">{{_pp.userInfo.name}}</h2>
+    <p>{{user.created_at}}</p>
   </ion-item>
   
   <ion-card-content>
-    <p>Como puedo optimizar el siguiente codigo?</p>
+    <p>{{user.descripcion}}</p>
   </ion-card-content>
 
-
- <ion-row >
-   <ion-col>
       <button ion-button icon-start clear small (click)="irComment()">
         <ion-icon name="text"></ion-icon>
-        <div>Comments</div>
+        Comments
       </button>
-    </ion-col>
-
+    </ion-card>
   </ion-row>
-</ion-card>  
-<ion-card>
-
-  <ion-item>
-    <ion-avatar item-start>
-  <img src="assets/imgs/logo.png">    
-    </ion-avatar>
-    <h2 (click)="perfil()">Luis</h2>
-    <p>Julio 5, 2018</p>
-  </ion-item>
-  
-  <ion-card-content>
-    <p>Como puedo optimizar el siguiente codigo?</p>
-  </ion-card-content>
-
-
-  <ion-row >
-   <ion-col>
-      <button ion-button icon-start clear small (click)="irComment()">
-        <ion-icon name="text"></ion-icon>
-        <div>Comments</div>
-      </button>
-    </ion-col>
-
-  </ion-row>
-
-</ion-card>  <ion-card>
-
-  <ion-item>
-    <ion-avatar item-start>
-  <img src="assets/imgs/logo.png">    
-    </ion-avatar>
-    <h2 (click)="perfil()">Luis</h2>
-    <p>Julio 5, 2018</p>
-  </ion-item>
-  
-  <ion-card-content>
-    <p>Como puedo optimizar el siguiente codigo?</p>
-  </ion-card-content>
-
-
-  <ion-row >
-   <ion-col>
-      <button ion-button icon-start clear small (click)="irComment()">
-        <ion-icon name="text"></ion-icon>
-        <div>Comments</div>
-      </button>
-    </ion-col>
-
-  </ion-row>
-
-</ion-card>
+</ion-grid> 
   </div>
 </ion-content>

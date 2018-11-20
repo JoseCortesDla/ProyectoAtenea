@@ -120,7 +120,7 @@ midatos(){
    }
 
    //Creacion de nueva cuenta  
-   crear(nick:string,email:string,name:string,password:string,pasco:string){
+   crear(name:string,email:string,nick:string,password:string,pasco:string){
     
     let data= new URLSearchParams();
     //Parametros

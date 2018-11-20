@@ -30,8 +30,7 @@ export class MperfilPage {
   ) {
     
     this.user=this.navParams.get("pregun");
-    console.log(this._us.me);
-    console.log(this._us.me.name);
+    
   }
 
   
@@ -43,16 +42,13 @@ cat(){
     console.log(parametros);
   })
 }
-  
-  //Valida y guarda el formulario
-
-
-data={ name:'nodr',     
-       app:this._us.me.name,
-       apm:'b',
-       nick:'c' ,
-       bio:'d',
-       lema: 'que sera'};
+  //carga los datos del perfil
+data={ name:this._us.me.name, 
+       app:this._us.me.apellidoP,
+       apm:this._us.me.apellidoM,
+        nick:this._us.me.nick,
+      bio:this._us.me.biografia,
+       lema: this._us.me.lema};
        
    update(){
      console.log("q show");

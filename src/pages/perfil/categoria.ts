@@ -40,13 +40,14 @@ cate:any[]=[];
    
 }
     
+    data:any=this.cate;
 
 ca(){
 
  
   
   console.log(this.cate);
- //  this.view.onDidDismiss('cate',{this.cate});
+  this.view.onDidDismiss(this.data);
 }
 
   

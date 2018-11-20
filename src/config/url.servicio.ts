@@ -1,1 +1,1 @@
-export const URL="http://192.168.1.53:3000/api/auth/";
+export const URL="http://72e89031.ngrok.io/api/auth/";

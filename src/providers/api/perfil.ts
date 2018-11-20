@@ -36,7 +36,7 @@ re:[]=[];
   headers.append('Authorization','Bearer '+this._us.token);
 
     let url=URL+"me/update";  
-console.log("nosequeed");
+
            return this.http.post(url,data,{headers})
            .map( resp => {
 
@@ -46,6 +46,27 @@ console.log("nosequeed");
             })
 }
 
+userInfo:any[]=[];
+userpre:any[]=[];
+usercat:any[]=[];
+
+infous(nick:string){
+  let headers= new Headers();  
+  headers.append('Content-Type','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
+
+let url=URL+"usuario/"+nick;
+
+return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{    
+              this.userInfo=data;
+              this.usercat=data.categorias;
+              this.userpre=data.pregunta;
+            // this.categoria.push(...data.categorias.data);             
+             console.log(this.userInfo);             
+            })
+}
 
 
 }
