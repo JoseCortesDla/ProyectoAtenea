@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import {PublicacionPage} from '../publicacion/publicacion';
+import {PublicacionPage} from './publicacion';
+import { ComentariosPage } from '../comentarios/comentarios';
+import { PcPage } from './pc';
+import { ForoProvider } from '../../providers/api/foro';
+import { PerfilPage } from '../perfil/perfil';
+
 @Component({
   selector: 'page-foro',
   templateUrl: 'foro.html'
@@ -9,83 +14,35 @@ import {PublicacionPage} from '../publicacion/publicacion';
 export class ForoPage {
 
   users: any[] = [];
+  pet:string
 
-  preguntas:any[]=[
-        {
-          usuario:"luis",
-          pregunta:"hola"
-        },
-        {
-          usuario:"Felipe",
-          pregunta:"como estan"
-        },{
-          usuario:"Maria",
-          pregunta:"Hay tarea de mate"
-        }
-      ];
-mutantes:any[] = [
-    {
-      nombre:"Luis",
-      poder: "Hola "
-    },
-    {
-      nombre: "Wolverine",
-      poder: " como estan"
-    },
-    {
-      nombre: "Profesor X",
-      poder: "Hay tarea de mate!!"
-    }
-  ];
-
-  cat:any[] = [
-    {
-      nombre:"Mate"
-    },
-    {
-      nombre: "Redes"
-    },
-    {
-      nombre: " Programacion"
-
-    },
-    {
-      nombre: " Etica"
-      
-    },
-    {
-      nombre: "Administración"
-      
-    }
-  ];
   constructor(
-    public navCtrl: NavController,
-    public userService: ApiProvider,
-    private _us:ApiProvider
-  ) {     
-/*this._us.pruebaGet();
-this.preguntas.splice(0);*/
-this.preguntas.splice(0);
+            public navCtrl: NavController,
+            public userService: ApiProvider,
+            private _us:ApiProvider,
+            private _fp:ForoProvider
+            ) {     
+    this.pet='Preguntas';
+    this._fp.allpre();
+    //this._fp.categorias();
+    this._fp.repuestaspre();
   }
-   ionViewDidLoad(){
-     this.preguntas.splice(0);
-   }
-/*
-  ionViewDidLoad(){
-    this.userService.getComents()
-    .subscribe(
-      (data) => { // Success
-        this.users = data['results'];
-        console.log("awebo");
-      },
-      (error) =>{
-        console.error(error);
-      }
-    )
-  }  */
+
+
   addpublicacion(){
     this.navCtrl.push(PublicacionPage)
   }
   
+  cate(cat:any){
+    this.navCtrl.push(PcPage,{cat})
+  }
+  comentario(){
+    this.navCtrl.push(ComentariosPage)
+  }
+
+  perfil(us:any){
+    this.navCtrl.push(PerfilPage,{us})
+
+  }
 
 }

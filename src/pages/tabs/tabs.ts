@@ -6,6 +6,8 @@ import { HomePage } from '../home/home';
 import { BibliotecaPage } from '../biblioteca/biblioteca';
 import {InicioPage} from '../inicio/inicio';
 import {ApiProvider} from  '../../providers/api/api';
+import { ForoProvider } from '../../providers/api/foro';
+
 
 @Component({
   templateUrl: 'tabs.html'
@@ -19,14 +21,13 @@ export class TabsPage {
   tab5Root = BibliotecaPage;
 
   constructor(private _us:ApiProvider,
-  				private navCtrl:NavController) {   
-
-/*     this._us.cargar_storage();
+  				private navCtrl:NavController,
+          private _fp:ForoProvider) {   
+      
+    this._us.cargar_storage();
        if (!this._us.activo()) {
-    this.navCtrl.push(InicioPage)  
-  */  
-//this._us.pruebaGet();
-
+    this.navCtrl.push(InicioPage)   
   }
-}
 
+}
+}

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PublicacionSalaPage } from './publicacion-sala';
-import {PublicacionPage} from '../publicacion/publicacion';
 import {ComentariosPage} from '../comentarios/comentarios';
 import { PerfilPage } from '../perfil/perfil';
 
@@ -24,19 +23,17 @@ sala:any={};
    console.log(navParams);
   }
 
-perfil(pregun:any){
-  this.navCtrl.push(PerfilPage,{pregun})
-}
-  irPublicacion() {
-    this.navCtrl.push(PublicacionSalaPage)
+  perfil(pregun:any){
+    this.navCtrl.push(PerfilPage,{pregun})
   }
-
+  
+  irPubli() {
+    this.navCtrl.push(PublicacionSalaPage,{'sala':this.sala})
+  }
 
   irComment(){
   	this.navCtrl.push(ComentariosPage)
   }
 
-  irPubli(){
-    this.navCtrl.push(PublicacionPage)
-  }
+ 
 }

@@ -1,4 +1,4 @@
-import { Http,URLSearchParams,Headers } from '@angular/http';
+import { Http,URLSearchParams,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Platform,AlertController} from "ionic-angular";
@@ -15,18 +15,37 @@ token:string;
               public http: Http,
               public storage:Storage,
               public alert:AlertController) {
-     //this.prueba();
+              
   }
 
   //Verifica si la sesion esta activa
   activo():boolean{
    return (this.token)? true:false;
       }
+ me:any[]=[];     
+midatos(){
+     
+    //Parametros
+  let headers= new Headers();  
+  headers.append('Content-Type','application/json');  
+  headers.append('Authorization','Bearer '+this.token);
+    
+  let url=URL+"user";
 
+    return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{            
+             this.me=data;
+              //this.users.push(...data.allpreguntas.data);
+             console.log(this.me);             
+            })
+
+}
   //Login
    entrar(correo:string,password:string){
   	let data= new URLSearchParams();
 
+  //concantena los parametros en  la data
   	data.append("email",correo);
   	data.append("password",password);
   	
@@ -99,32 +118,6 @@ token:string;
       });
       return promesa;
    }
-/*
-   house(){
-     console.log("house");
-     let data= new URLSearchParams();
-
-     let ap="application/son";
-     data.append("Content-Typw",ap);
-     let au="Bearer"+this.token;
-    data.append("Authorization",au);
-    
-
-    
-
-    let url=URL+"house";
-
-    return this.http.get(url,data)
-            .map( resp=>{
-              let res=resp.json();
-              console.log(res);
-          
-
-
-            })
-
-  }*/
-  
 
    //Creacion de nueva cuenta  
    crear(nick:string,email:string,name:string,password:string,pasco:string){

@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="primary">
  <div padding>
   <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="Preguntas">
@@ -17,33 +17,28 @@
     </ion-segment-button>
   </ion-segment>
 </div>
-<div [ngSwitch]="pet">
-  <ion-list *ngSwitchCase="'Preguntas'">
-    <ion-item *ngFor="let pregun of mutantes">
-      <ion-avatar item-start>
-    <ion-icon name="person" md></ion-icon>        
-      </ion-avatar>
-      <h2>{{pregun.nombre}}</h2>
-      <p>{{pregun.poder}}</p>
-    </ion-item>
 
+<div [ngSwitch]="pet">
+
+  <ion-list *ngSwitchCase="'Preguntas'">
+    <ion-item *ngFor="let pregun of _fp.preguntas" >
+      <ion-avatar item-start>
+    <ion-icon name="person" md (click)=perfil(pregun.user)></ion-icon>        
+      </ion-avatar>
+      <h2>{{pregun.user.name}}</h2>
+      <p>{{pregun.titulo}}</p>
+      <p (click)="comentario()">{{pregun.descripcion}} </p>
+    </ion-item>
   </ion-list>
 
   <ion-list *ngSwitchCase="'Categoria'">
-      <ion-item *ngFor="let pregun of cat">
-      <h2>{{pregun.nombre}}</h2>
-      
+      <ion-item *ngFor="let pregun of _fp.categoria" (click)="cate(pregun)">
+      <h2>{{pregun.nombre}}</h2>  
     </ion-item>
   </ion-list>
+
 </div>
- <ion-grid>
-    <ion-row *ngFor="let pot of _us.pots">
-      
-      <h2>{{ pot.id | uppercase }}</h2>
-      <p>{{ pot.nombre }}</p>
-      <p>{{pot.descripcion}}</p>
-    </ion-row>
-  </ion-grid>
+
  <ion-fab bottom right > 
  <button ion-fab mini (click)="addpublicacion()"><ion-icon name="ios-create-outline"></ion-icon></button>
 </ion-fab>

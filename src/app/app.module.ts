@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DocumentViewer } from '@ionic-native/document-viewer';
-
+import { EmailComposer } from '@ionic-native/email-composer';
 import {SalaPage,
         SalasPage,
         ForoPage,
@@ -21,6 +21,8 @@ import {SalaPage,
         PublicacionPage,
         MperfilPage,
         AcercaPage,
+        CategoriaPage,
+        PcPage,
         LoginPage} from '../pages/index.paginas';
 
 //Provedores de servicios
@@ -50,6 +52,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MenuperfilPage,
     LoginPage,
     PublicacionPage,
+    CategoriaPage,
+    PcPage,
     PerfilPage,
 AcercaPage
   ],
@@ -76,7 +80,9 @@ AcercaPage
     PublicacionPage,
     LoginPage,
     MperfilPage,
-    AcercaPage
+    AcercaPage,
+    PcPage,
+    CategoriaPage
   ],
   providers: [
     StatusBar,
@@ -87,6 +93,7 @@ AcercaPage
     PublicacionesProvider,
     SalasProvider,
     ForoProvider,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     File,
     FileTransfer,

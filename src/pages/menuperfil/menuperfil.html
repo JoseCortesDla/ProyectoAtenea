@@ -17,9 +17,9 @@
 
 	<ion-item >
       <ion-avatar item-start>
-       <img (click)="miperfil()" src="assets/imgs/images.jpg">
+       <img (click)="perfil()" src="assets/imgs/images.jpg">
       </ion-avatar>
-      <h2 (click)="miperfil()">Chifu</h2>
+      <h2 (click)="perfil()">Chifu</h2>
       <p>email</p>
     </ion-item>
 
@@ -39,8 +39,8 @@
       Interes3
     
   </ion-item>
-  <ion-item>
-    <ion-icon name="medical" item-start (click)="acerca()"></ion-icon>
+  <ion-item (click)="acerca()">
+    <ion-icon name="medical" item-start ></ion-icon>
       Acerca de    
   </ion-item>
   <ion-item (click)="_us.cerrar_sesion()">

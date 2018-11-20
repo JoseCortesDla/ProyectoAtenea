@@ -7,8 +7,8 @@ import {ApiProvider} from  '../../providers/api/api';
 
 
 @Component({
-  selector: 'page-acercaperfil',
-  templateUrl: 'acercaperfil.html',
+  selector: 'page-acerca',
+  templateUrl: 'acerca.html',
 })
 export class AcercaPage {
 
@@ -17,4 +17,5 @@ export class AcercaPage {
               public navParams: NavParams,
               private _us:ApiProvider) {
   }
+ 
 }

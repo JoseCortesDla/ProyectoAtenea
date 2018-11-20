@@ -19,7 +19,7 @@
 				
 		 	<ion-label>Categoria</ion-label>
 		 	<ion-select [(ngModel)]="nota" >
-		 		<ion-option  *ngFor="let op of option" value="{{op.nombre}}">{{op.nombre}}</ion-option>		 
+		 		<ion-option  *ngFor="let op of _fp.categoria" value="{{op.id}}">{{op.nombre}}</ion-option>		 
 		 	</ion-select>
 		 </ion-item>
 			<form [formGroup]="formularioPubli" (ngSubmit)="savePubli()">
@@ -60,7 +60,7 @@
 				</ion-list>						
 			
 	<div class="mt-2" align="center">
-			  <button ion-button round  [disabled]="!formularioPubli.valid" >Crear pregunta</button>
+			  <button ion-button round  [disabled]="!formularioPubli.valid" class="tex uppercase" >Crear pregunta</button>
 			</div>
 		</form>
 	

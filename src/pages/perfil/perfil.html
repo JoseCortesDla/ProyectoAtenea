@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{user.name.title}}</ion-title>
+    <ion-title>{{user.name}}</ion-title>
     
   </ion-navbar>
 
@@ -17,11 +17,15 @@
 <ion-content class="card-background-page">
 
 	<div align="center">
-   <img [src]="user.picture.large"> 
-   <h1>{{user.name.title}}</h1>
+   <img [src]="user.foto"> 
+   <h1>{{user.name}}</h1>
    <p>
-     {{user.cell}}
+     {{user.lema}}
    </p>
+    
+       <button ion-button clear  *ngIf="_us.me.email==user.email" (click)="mperfil()">
+        Editar
+      </button>
    <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="Informacion">
       Informacion
@@ -35,16 +39,31 @@
   <ion-list *ngSwitchCase="'Informacion'">
      <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      Informacion
+      {{user.email}}
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      Informacion
+      {{user.apellidoM}}
     
   </ion-item>
   <ion-item>
     <ion-icon name="leaf" item-start></ion-icon>
-      Informacion
+      {{user.apellidop}}
+    
+  </ion-item>
+  <ion-item>
+    <ion-icon name="leaf" item-start></ion-icon>
+      {{user.nick}}
+    
+  </ion-item>
+  <ion-item>
+    <ion-icon name="leaf" item-start></ion-icon>
+      {{user.bio}}
+    
+  </ion-item>
+  <ion-item>
+    <ion-icon name="leaf" item-start></ion-icon>
+     Se unio el {{user.creat_at}}
     
   </ion-item>
   </ion-list>

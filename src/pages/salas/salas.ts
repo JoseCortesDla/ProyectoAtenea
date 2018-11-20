@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,AlertController,ToastController } from 'ionic-angular';
 import { SalaPage } from '../sala/sala';
 import {ApiProvider} from  '../../providers/api/api';
+import { SalasProvider } from '../../providers/api/salas';
 
 @Component({
   selector: 'page-salas',
@@ -14,8 +15,9 @@ export class SalasPage {
   		public navCtrl: NavController,
   		public alertCtrl:AlertController,
   		public toastCtrl: ToastController,
-      private _us:ApiProvider) {
-    console.log("sala");
+      private _us:ApiProvider,
+      private _sp:SalasProvider) {
+    this._sp.salas();
     this._us.cargar_storage();
   }
 

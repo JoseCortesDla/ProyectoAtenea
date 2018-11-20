@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ModalController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TabsPage} from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';
+import { CategoriaPage } from './categoria';
 import {ApiProvider} from  '../../providers/api/api';
+import { PerfilProvider } from  '../../providers/api/perfil';
+
 
 @Component({
   selector: 'page-mperfil',
@@ -17,72 +20,55 @@ export class MperfilPage {
 
   constructor(
     public navCtrl: NavController,
-     private alertCtrl: AlertController,
+    private alertCtrl: AlertController,
     private fb: FormBuilder,
     private _us:ApiProvider,
+    private _pp:PerfilProvider,
     private alert:AlertController,
-    public navParams:NavParams
+    public navParams:NavParams,
+    public md:ModalController
   ) {
-    this.buildForm();
+    
     this.user=this.navParams.get("pregun");
-    console.log(this.me);
+    console.log(this._us.me);
+    console.log(this._us.me.name);
   }
 
+  
+cat(){
+  let modal=this.md.create(CategoriaPage);
+  modal.present();
 
-me:any[] = [
-    {
-      nombre:"Luis",
-      app:"",
-      apm:"",
-      nick: "H ",
-      lema:"",
-      bio:""
+  modal.onDidDismiss(parametros=>{
+    console.log(parametros);
+  })
 }
-  ];
+  
   //Valida y guarda el formulario
-  saveData(){
-   // console.log(this.formularioUsuario.value);    
-           /*console.log( this.formularioUsuario.value.email);
-                     console.log(this.formularioUsuario.value.nick);
-                     console.log(this.formularioUsuario.value.password);
-                     console.log(this.formularioUsuario.value.passwordConfirmation);*/
-    //this.navCtrl.push(TabsPage)
-    if (this.formularioUsuario.value.password!=this.formularioUsuario.value.passwordConfirmation) {
-        this.alert.create({
-          title:"La contraseña no coincide",
-          buttons:["ok"]
-        }).present();
-      }
-    //Servicio para crear una cuenta
-       this._us.crear(
-                     this.formularioUsuario.value.name,
-                     this.formularioUsuario.value.email,
-                     this.formularioUsuario.value.nick,
-                     this.formularioUsuario.value.password,
-                     this.formularioUsuario.value.passwordConfirmation)
-       .subscribe(()=>{
-         if(this._us.activo){
-            this.navCtrl.push(InicioPage)            
-         }       
-       })
 
-  }
 
-  
-
-buildForm() {
-  
-    this.formularioUsuario = this.fb.group({   
-      name:['',Validators.compose([Validators.required,Validators.minLength(5)])] ,
-      app:['',Validators.compose([Validators.required,Validators.minLength(5)])] ,
-      apm:['',Validators.compose([Validators.required,Validators.minLength(5)])] ,
-      nick:['',Validators.compose([Validators.required,Validators.minLength(5)])] ,
-      email:['',Validators.compose([Validators.required,Validators.email])],       
-      password: ['',Validators.compose([Validators.required,Validators.minLength(5)])],
+data={ name:'nodr',     
+       app:this._us.me.name,
+       apm:'b',
+       nick:'c' ,
+       bio:'d',
+       lema: 'que sera'};
        
-       
-    });
-  }
+   update(){
+     console.log("q show");
+      this._pp.crear(
+                             this.data.app,
+                             this.data.apm,
+                             this.data.bio,
+                             this.data.lema,
+                             this.data.name,
+                             this.data.nick)
+      .subscribe(()=>{
+        
+      })
+      
+   }
+  
 
 
 }

@@ -1,28 +1,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Categorias</ion-title>
+    <ion-title align="center">Categorias</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+  <h6 align="center">Selecciona una o mas categorias de interes</h6>
+
 	<ion-list>
+    <ion-item *ngFor="let cat of _fp.categoria; let i=index" >
+      <ion-label>{{cat.nombre}}</ion-label>
+      <ion-checkbox  (ionChange)="enviar(i)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
 
-  <ion-item>
-    <ion-label>Pepperoni</ion-label>
-    <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Sausage</ion-label>
-    <ion-checkbox [(ngModel)]="sausage" disabled="true"></ion-checkbox>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Mushrooms</ion-label>
-    <ion-checkbox [(ngModel)]="mushrooms"></ion-checkbox>
-  </ion-item>
-
-</ion-list>
+  <div class="mt-2" align="center">
+     <button ion-button block (click)="ca()">Enviar</button>
+  </div>
 </ion-content>

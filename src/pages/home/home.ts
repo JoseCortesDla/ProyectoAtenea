@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Refresher, reorderArray }  from "ionic-angular";
-import {ApiProvider} from  '../../providers/api/api';
+import { ApiProvider} from  '../../providers/api/api';
+import { ForoProvider } from '../../providers/api/foro';
 import { MenuperfilPage } from '../menuperfil/menuperfil';
 import { MperfilPage } from '../perfil/mperfil';
 import { PerfilPage } from '../perfil/perfil';
 import { TabsPage } from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';
 import {ComentariosPage} from '../comentarios/comentarios';
+
+
 
 @Component({
   selector: 'page-home',
@@ -19,10 +22,12 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController,
-  				private _us:ApiProvider,
-          private http:Http) {
- this._us.prueba();
-
+  				private _us:ApiProvider,          
+          private http:Http,
+          private _fp:ForoProvider) {
+    this._us.midatos();
+   this._us.prueba();  
+   this._fp.categorias();
   }
 
 irPerfil(pregun:any){

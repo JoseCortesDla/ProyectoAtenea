@@ -1,17 +1,9 @@
 <ion-header>
   <ion-navbar>
 <h1 align="center">{{sala.poder}}</h1>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addSala()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
-
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content class="card-background-page">
 <ion-grid>
   <ion-row>
@@ -23,49 +15,38 @@
     <h2>{{sala.nombre}}</h2>
     <p>November 5, 1955</p>
   </ion-item>
-  
-
   <ion-card-content (click)="irPublicacion()">
     <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
   </ion-card-content>
-
  <button ion-button icon-start clear small (click)="irComment()">
   <ion-icon name="text"></ion-icon>
       Comentar
   </button>
     </ion-card>
 </ion-row>
- 
- </ion-grid>
-   
+</ion-grid>
 
-
-<ion-card (click)="irPublicacion()">
-
+<ion-grid>
+  <ion-row>
+<ion-card >
   <ion-item>
     <ion-avatar item-start>
-  <img src="assets/imgs/logo.png">    
+      <img src="img/marty-avatar.png" (click)="perfil(sala)">
     </ion-avatar>
-    <h2 (click)="perfil()">{{sala.nombre}}</h2>
-    <p>Julio 5, 2018</p>
+    <h2>{{sala.nombre}}</h2>
+    <p>November 5, 1955</p>
   </ion-item>
-  
-  <ion-card-content>
-    <p>Investigar la historia del arte en dos cuartillas</p>
+  <ion-card-content (click)="irPublicacion()">
+    <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
   </ion-card-content>
-
-
-  <ion-row >
-   <ion-col>
-      <button ion-button icon-start clear small (click)="irComment()">
-        <ion-icon name="text"></ion-icon>
-        <div>Comments</div>
-      </button>
-    </ion-col>
-
-  </ion-row>
-
-</ion-card>
+ <button ion-button icon-start clear small (click)="irComment()">
+  <ion-icon name="text"></ion-icon>
+      Comentar
+  </button>
+    </ion-card>
+</ion-row>
+</ion-grid>
+   
 <ion-fab bottom right >
  <button ion-fab mini (click)="irPubli()"><ion-icon name="ios-create-outline"></ion-icon></button>
 </ion-fab>
