@@ -10,35 +10,22 @@ import { SalasProvider } from '../../providers/api/salas';
 })
 export class SalasPage {
 
-
   constructor(
   		public navCtrl: NavController,
   		public alertCtrl:AlertController,
   		public toastCtrl: ToastController,
       private _us:ApiProvider,
       private _sp:SalasProvider) {
-    this._sp.salas();
+    
     this._us.cargar_storage();
+    this._sp.inscrito();
+    
   }
 
   irSala(sala:any){
   	this.navCtrl.push(SalaPage,{sala})
   }
 
-mutantes:any[] = [
-    {
-      nombre:"Luis",
-      poder: "Mate "
-    },
-    {
-      nombre: "Wolverine",
-      poder: " Redes"
-    },
-    {
-      nombre: "Profesor X",
-      poder: "Programacion"
-    }
-  ];
 
   addSala() {
     const prompt = this.alertCtrl.create({
@@ -59,10 +46,10 @@ mutantes:any[] = [
         {
           text: 'Unirse',
           handler: data => {
-            console.log('Saved clicked');
-            this.presentToast;
+            console.log('Saved clicked');            
+           this._sp.unirse(data.codigo);
           }
-        }
+        }                              
       ]
     });
     prompt.present();

@@ -18,13 +18,13 @@
     <h2>{{sala.nombre}}</h2>
     <p>November 5, 1955</p>
   </ion-item>
-  <ion-card-content (click)="irPublicacion()">
+  <ion-card-content >
     <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
   </ion-card-content>
- <button ion-button icon-start clear small (click)="irComment()">
+ <!--<button ion-button icon-start clear small (click)="irComment()">
   <ion-icon name="text"></ion-icon>
       Comentar
-  </button>
+  </button>--->
     </ion-card>
 </ion-row>
 </ion-grid>
@@ -39,19 +39,19 @@
     <h2>{{sala.nombre}}</h2>
     <p>November 5, 1955</p>
   </ion-item>
-  <ion-card-content (click)="irPublicacion()">
+  <ion-card-content >
     <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
   </ion-card-content>
- <button ion-button icon-start clear small (click)="irComment()">
+ <!---<button ion-button icon-start clear small (click)="irComment()">
   <ion-icon name="text"></ion-icon>
       Comentar
-  </button>
+  </button>--->
     </ion-card>
 </ion-row>
 </ion-grid>
    
 <ion-fab bottom right >
- <button ion-fab mini (click)="irPubli()"><ion-icon name="ios-create-outline"></ion-icon></button>
+ <button ion-fab mini (click)="irPubli(sala)"><ion-icon name="ios-create-outline"></ion-icon></button>
 </ion-fab>
 
 

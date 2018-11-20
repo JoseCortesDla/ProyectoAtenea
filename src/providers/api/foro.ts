@@ -98,7 +98,7 @@ repuestaspre(){
   headers.append('Content-Type','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
     
-  let url=URL+"forores.store";
+  let url=URL+"forores";
 
     return this.http.get(url,{headers})
            .map( resp => resp.json() )

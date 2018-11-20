@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Platform,AlertController} from "ionic-angular";
 import { URL } from "../../config/url.servicio";
+import { ApiProvider } from '../../providers/api/api';
 
 
 @Injectable()
@@ -12,63 +13,72 @@ token:string;
 
   constructor(
               public http: Http,              
-              public alert:AlertController) {
+              public alert:AlertController,
+              private _us:ApiProvider) {
   }
 
-   crearpublicacion(nick:string,email:string,name:string,password:string,pasco:string){
+   crearidea(id:string,titulo:string,ideat:string,status:string){
+
+      let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
     
     let data= new URLSearchParams();
     //Parametros
-    data.append("nick",nick)
-    data.append("email",email);
-    data.append("name",name);
-    data.append("password",password);
-    data.append("password_confirmation",pasco);
+    data.append("sala_id",id);
+    data.append("descripcion",ideat);
+    data.append("titulo",status);
 
-    let url=URL+"signup";
+    let url=URL+"salas";
 
-    return this.http.post(url,data)
+    return this.http.post(url,data,{headers})
            .map( resp=>{
               let res=resp.json();
-              console.log(res);
-              if (res.status==422) {
-                this.alert.create({
-                  title:"Datos incorreto",
-                  message:"Verifique que los datos sean validos",
-                  buttons:["ok"]
-                }).present();
-              }else{
-                 if (res.status==201) {
-                this.alert.create({
-                  title:"Usuario creado",
-                  message:"Verifique su correo para activar su cuenta",
-                  buttons:["ok"]
-                }).present();
-              }
-            }
+              console.log(res);              
             });
    
 	}
 
-missalas:any[]=[];
-	//unirse a un curso
-	salas(){
 
+	//unirse a un curso
+	unirse(cod:string){
+
+ let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
+    
+    let data= new URLSearchParams();
     //Parametros
+    data.append("codigo",id);
+
+    let url=URL+"joinsala";
+
+    return this.http.post(url,data,{headers})
+           .map( resp=>{
+              let res=resp.json();
+              console.log(res);              
+            });
+	}
+
+
+missalas:any[]=[];
+  
+  inscrito(){
+        //Parametros
   let headers= new Headers();  
-  headers.append('Content-Type','application/json');  
-  headers.append('Authorization','Bearer '+this.token);
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
     
   let url=URL+"inscrito";
 
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             this.missalas=data;
+             this.missalas=data.insalas;
               //this.users.push(...data.allpreguntas.data);
              console.log(this.missalas);             
             })
 
-	}
+   }
+  }
 
-}

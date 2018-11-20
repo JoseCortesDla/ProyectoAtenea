@@ -24,30 +24,6 @@ formularioPubli:any;
   }
 nota:string='';
 
-
-
-
-
-  option:any[] = [
-    {
-      nombre:"Mate"
-    },
-    {
-      nombre: "Redes"
-    },
-    {
-      nombre: " Programacion"
-
-    },
-    {
-      nombre: " Etica"
-      
-    },
-    {
-      nombre: "Administración"
-      
-    }
-  ];
   //Valida y guarda el formulario
   savePubli(){
  console.log(this.formularioPubli.value.titulo);
@@ -68,7 +44,7 @@ if (this.nota.length<1) {
                              this.formularioPubli.value.text,
                              this.nota)
        .subscribe(()=>{
-        this.navCtrl.push(ForoPage)    
+        this.navCtrl.pop()    
        })
 
   }

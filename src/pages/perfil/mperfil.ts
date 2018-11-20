@@ -43,6 +43,7 @@ cat(){
   })
 }
   //carga los datos del perfil
+  
 data={ name:this._us.me.name, 
        app:this._us.me.apellidoP,
        apm:this._us.me.apellidoM,
@@ -51,7 +52,7 @@ data={ name:this._us.me.name,
        lema: this._us.me.lema};
        
    update(){
-     console.log("q show");
+     
       this._pp.crear(
                              this.data.app,
                              this.data.apm,
@@ -60,7 +61,7 @@ data={ name:this._us.me.name,
                              this.data.name,
                              this.data.nick)
       .subscribe(()=>{
-        
+        this.navCtrl.pop()
       })
       
    }

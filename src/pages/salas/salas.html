@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-<ion-grid  *ngFor="let pregun of mutantes" (click)="irSala(pregun)">
+<ion-grid  *ngFor="let pregun of _sp.missalas" (click)="irSala(pregun)">
     <ion-row>
 
 <ion-card>
   <ion-item>  
-    <h1>{{pregun.nombre}}</h1>    
+    <h1>{{pregun.titulo}}</h1>    
   </ion-item>
   <img src="img/advance-card-bttf.png">
   <ion-card-content>
-  <h2>{{pregun.poder}}</h2>
+  <p>{{pregun.descripcion}}</p>
   </ion-card-content>
 </ion-card>
 </ion-row>

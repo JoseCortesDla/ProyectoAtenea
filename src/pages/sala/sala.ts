@@ -27,7 +27,7 @@ sala:any={};
     this.navCtrl.push(PerfilPage,{pregun})
   }
   
-  irPubli() {
+  irPubli(sala:any) {
     this.navCtrl.push(PublicacionSalaPage,{'sala':this.sala})
   }
 

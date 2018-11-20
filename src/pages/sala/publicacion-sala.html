@@ -49,10 +49,10 @@
         </ion-list>           
       </form>
   <div class="mt-2" align="center">
-        <button ion-button block (click)="op(0)">Crear pregunta</button>
+        <button ion-button block (click)="savePubli('false')" name="op" value="'false'">Crear pregunta</button>
       </div>
        <div class="mt-2" align="center">
-        <button ion-button block  (click)="op1(1)" color="danger">Crear pregunta anonima</button>
+        <button ion-button block color="danger" (click)="savePubli('true')" name="op" value="'true'" >Crear pregunta anonima</button>
       </div>
     
   
