@@ -44,7 +44,7 @@ if (this.nota.length<1) {
                              this.formularioPubli.value.text,
                              this.nota)
        .subscribe(()=>{
-        this.navCtrl.pop()    
+        this.navCtrl.pop()           
        })
 
   }

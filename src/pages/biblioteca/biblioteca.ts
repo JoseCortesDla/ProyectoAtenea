@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { File } from '@ionic-native/file';
-import { FileTransfer } from '@ionic-native/file-transfer';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 /**
  * Generated class for the BibliotecaPage page.
  *
@@ -25,6 +25,9 @@ export class BibliotecaPage {
   			private transfer:FileTransfer) {
   }
 
+
+fileTransfer: FileTransferObject = this.transfer.create();
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad BibliotecaPage');
   }	
@@ -46,13 +49,13 @@ export class BibliotecaPage {
   	else{
   		path=this.file.dataDirectory;
   	}
-  	const transfer=this.transfer.create();
+  	const url='http://www.oeidrus-morelos.gob.mx/compendio/files/Jiutepec.pdf';
 
-  	transfer.download('http://liceodeadultoslgc.cl/recurpedagogicos/escaladenotas.pdf',path+ 'myfile.pdf')
-  		.then(entry => {
-  			let url =entry.toURL();
-  			this.document.viewDocument(url,'aplication/pdf',{});
-  		});
+      this.fileTransfer.download(url, this.file.dataDirectory + 'Jiutepec.pdf').then((entry) => {
+    console.log('download complete: ' + entry.toURL());
+  }, (error) => {
+    // handle error
+  });
 
   }
 

@@ -15,29 +15,30 @@
 
 <ion-content padding>
   <ion-list >
-    <ion-item *ngFor="let pregun of comen">
+    <ion-item *ngFor="let pregun of _fp.repregunta">
       <ion-avatar item-start>
     <ion-icon name="person" md></ion-icon>
         
       </ion-avatar>
-      <h2>{{pregun.nombre}}</h2>
-      <p>{{pregun.poder}}</p>
+      <h2>{{pregun.user.name}}</h2>
+      <p>{{pregun.respuesta}}</p>
     </ion-item>
 
   </ion-list>
   <ion-footer>
+    <form [formGroup]="formularioComen" (ngSubmit)="coment()">
   <ion-toolbar>
-               <ion-item>    
-    <ion-input type="text" placeholder="Escribe un comentario" name="comentario" ></ion-input>
-  </ion-item>
+    <ion-item>    
+        <ion-textarea type="textarea" placeholder="Escribe un comentario....."  formControlName="text"  name="text"></ion-textarea>
+    </ion-item>  
     <ion-buttons end>
-      <button ion-button icon-end>
-        <ion-icon name="alert" color="danger"></ion-icon>
-      </button>
-      <button ion-button icon-end color="royal" (click)="coment(comentario)">
-        <ion-icon name="send"></ion-icon>
-      </button>
+            <button ion-button icon-end color="royal"  [disabled]="!formularioComen.valid">
+            <ion-icon name="send"></ion-icon>
+            </button>
     </ion-buttons>
+
   </ion-toolbar>
-</ion-footer>
+  </form>
+  </ion-footer>
+
 </ion-content>

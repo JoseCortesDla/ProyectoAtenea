@@ -1,6 +1,6 @@
 import { Http,URLSearchParams } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
 
 import { Refresher, reorderArray }  from "ionic-angular";
 import { ApiProvider} from  '../../providers/api/api';
@@ -24,7 +24,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
   				private _us:ApiProvider,          
           private http:Http,
-          private _fp:ForoProvider) {
+          private _fp:ForoProvider,
+          private toast:ToastController) {
     this._us.midatos();
    this._us.prueba();  
    this._fp.categorias();
@@ -60,4 +61,27 @@ perfil(pregun:any){
 irComment(){
   this.navCtrl.push(ComentariosPage)
 }
+
+recargar(refresher:Refresher){
+  this.presentToast();
+  setTimeout(()=>{
+    this._us.prueba();  
+    refresher.complete();
+  },1500)
+}
+
+
+presentToast() {
+  let toast = this.toast.create({
+    message: 'Cargando....',
+    duration: 2000,
+    position: 'top'
+  });
+    toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+ toast.present();
+}
+
+
 }

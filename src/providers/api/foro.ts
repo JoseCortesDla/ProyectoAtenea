@@ -1,7 +1,7 @@
 import { Http,URLSearchParams,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Platform,AlertController} from "ionic-angular";
+import {Platform,AlertController,ToastController} from "ionic-angular";
 import { URL } from "../../config/url.servicio";
 import { ApiProvider } from './api';
 
@@ -14,10 +14,12 @@ token:string;
   constructor(
               public http: Http,              
               public alert:AlertController,
-              private _us:ApiProvider
+              private _us:ApiProvider,
+              private toastCtrl: ToastController
               ) {
-    this.allpre();
+    
     this.categorias();
+    this.mispre();
   }
 
 
@@ -37,9 +39,27 @@ token:string;
     return this.http.post(url,data,{headers})
            .map( resp=>{
               let res=resp.json();
-              console.log(res);             
+              console.log(res); 
+              this.presentToast('1');            
             });
    
+}
+
+presentToast(op:number) {
+
+  let ms;
+  (op==1)?ms="Publicando":"idea publicada";
+     
+   
+  let toast = this.toastCtrl.create({
+    message: ms,
+    duration: 3000,
+    position: 'top'
+  });
+    toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+ toast.present();
 }
 
 categoria:any[]=[];
@@ -83,65 +103,98 @@ allpre(){
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             //this.preguntas=data;
+    
             this.preguntas.push(...data.allpreguntas.data);
             
              console.log(this.preguntas);             
             })
 }
-   
-   repreguntas:any[]=[];
-repuestaspre(){
+
+mspreguntas:any[]=[];
+mispre(){
      
     //Parametros
   let headers= new Headers();  
   headers.append('Content-Type','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
     
-  let url=URL+"forores";
+  let url=URL+"mspreguntas";
 
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             this.repreguntas=data;
-              //this.repreguntas.push(...data.allpreguntas.data);
-             console.log(this.repreguntas);             
+             //this.preguntas=data;
+            this.mspreguntas.push(...data.mspreguntas.data);
+            
+             console.log(this.mspreguntas);             
+            })
+} 
+   
+   repregunta:any[]=[];
+
+   /*
+repuestaspre(slug:string){
+     
+    //Parametros
+  let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);  
+
+  let url=URL+"foro/"+slug;
+  console.log(url);
+
+    return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{            
+             this.repregunta=data;
+           
+             console.log("aqi las respuestas"+this.repregunta);             
             })
 }
+*/
 
-res(id:string,res:string){
+repuestaspre(slug:string){
+     
+    //Parametros
+  let headers= new Headers();  
+  headers.append('Content-Type','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
     
+   let url=URL+"foro/"+slug;
+
+    return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{            
+             this.repregunta=data.respuestas;
+              //this.users.push(...data.allpreguntas.data);
+             console.log(this.repregunta);             
+            })
+
+}
+
+
+res(id:string,re:string){
+     
+     let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);   
     let data= new URLSearchParams();
     //Parametros
-    data.append("respuesta",res);
-    //data.append("user_id",this._us.user);
     data.append("pregunta_id",id);
-    
+    data.append("respuesta","josejosejosejsjsjjsjsjaklsaklkskkdljlfjdasjkljkldasjkadsljklasdjksadjkasjkasjkaskajlsjkasdjkasdjkasdjkl");    
 
-    let url=URL+"respuesta";
 
-    return this.http.post(url,data)
-           .map( resp=>{
-
+    let url=URL+"forores";
+console.log(url);
+    return this.http.post(url,data,{headers})
+            .map( resp=>{
               let res=resp.json();
-              console.log(res);
-              if (res.status==422) {
-                this.alert.create({
-                  title:"Datos incorreto",
-                  message:"Verifique que los datos sean validos",
-                  buttons:["ok"]
-                }).present();
-              }else{
-                 if (res.status==201) {
-                this.alert.create({
-                  title:"Usuario creado",
-                  message:"Verifique su correo para activar su cuenta",
-                  buttons:["ok"]
-                }).present();
-              }
-            }
+              console.log("jajajajaj"+res);          
             });
    
 }
+
+
+
 
 }

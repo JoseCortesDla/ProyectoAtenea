@@ -1,41 +1,22 @@
-
 <ion-header>
-
   <ion-navbar>
     <ion-title> Crear publicación</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content class="container bg-light">
+  <ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
   <div class="px-4 py-3">
       
         
       <form [formGroup]="formularioPubli" (ngSubmit)="savePubli()">
-        <ion-list>
-          <!--Input email-->
-          <ion-item>
-              
-              <ion-label stacked>Título:</ion-label>
-              <ion-input formControlName="titulo" type="text" placeholder="Título" name="titulo"></ion-input>
-              </ion-item>
-              <ion-item *ngIf="formularioPubli.get('titulo').errors && formularioPubli.get('titulo').dirty" class="error">
-                <p color="danger" *ngIf="formularioPubli.get('titulo').hasError('required')" class="error">
-                  El título es requerido.
-                </p>
-                <p *ngIf="formularioPubli.get('titulo').hasError('minlength')" class="error">
-                  El minimo de caracteres es 10
-                </p>
-            </ion-item>
-          <!--Input email-->
-             <!--Input password-->  
-
-     
-        <!--Input password-->
-             <!--Input password-->                   
+        <ion-list>          
+             <!--Input idea-->                   
             <ion-item>              
-              <ion-label stacked>Pregunta:</ion-label>
-              <ion-textarea formControlName="text" type="textarea" placeholder="Escribe una pregunta" name="text"></ion-textarea>
+              <ion-label stacked>Idea:</ion-label>
+              <ion-textarea formControlName="text" type="textarea" placeholder="Escribe una idea" name="text"></ion-textarea>
             </ion-item>
              <ion-item *ngIf="formularioPubli.get('text').errors && formularioPubli.get('text').dirty" class="error">              
               <p *ngIf="formularioPubli.get('text').hasError('required')" class="error">
@@ -45,7 +26,7 @@
                   El minimo de caracteres es 40
                 </p>
         </ion-item>
-        <!--Input password-->
+        <!--Input idea-->
         </ion-list>           
       </form>
   <div class="mt-2" align="center">
@@ -54,12 +35,5 @@
        <div class="mt-2" align="center">
         <button ion-button block color="danger" (click)="savePubli('true')" name="op" value="'true'" >Crear pregunta anonima</button>
       </div>
-    
-  
-      
-      
-
-    </div>
-  
-    
+    </div>   
 </ion-content>

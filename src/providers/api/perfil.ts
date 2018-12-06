@@ -23,9 +23,9 @@ re:[]=[];
     
     let data= new URLSearchParams();
     //Parametros
-    //data.append("nick",nick)
+    data.append("nick",nick)
     data.append("apellidoP",ap);
-    //data.append("name",name);
+    data.append("name",name);
     data.append("apellidoM",am);
     data.append("biografia",bio);
     data.append("lema",lema);

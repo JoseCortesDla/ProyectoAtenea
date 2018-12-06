@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,ToastController } from 'ionic-angular';
 import { SalaPage } from '../sala/sala';
-import {ApiProvider} from  '../../providers/api/api';
+import { ApiProvider} from  '../../providers/api/api';
 import { SalasProvider } from '../../providers/api/salas';
 
 @Component({
@@ -53,7 +53,9 @@ export class SalasPage {
       ]
     });
     prompt.present();
+    
   }
+
 
  presentToast() {
     const toast = this.toastCtrl.create({
@@ -62,5 +64,12 @@ export class SalasPage {
     });
     toast.present();
   }
+
+  recargar(refresher:Refresher){
+  setTimeout(()=>{
+    this._sp.inscrito();  
+    refresher.complete();
+  },1500)
+}
 
 }

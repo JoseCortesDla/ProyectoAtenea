@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,Refresher } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import {PublicacionPage} from './publicacion';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -27,7 +27,7 @@ export class ForoPage {
     this.pet='Preguntas';
     this._fp.allpre();
     //this._fp.categorias();
-    this._fp.repuestaspre();
+    //this._fp.repuestaspre();
   }
 
 
@@ -38,8 +38,8 @@ export class ForoPage {
   cate(cat:any){
     this.navCtrl.push(PcPage,{cat})
   }
-  comentario(){
-    this.navCtrl.push(ComentariosPage)
+  comentario(pregun:any){
+    this.navCtrl.push(ComentariosPage,{pregun})
   }
 
   perfil(us:string){
@@ -47,5 +47,15 @@ export class ForoPage {
     this.navCtrl.push(PerfilPage)
 
   }
+
+  recargar(refresher:Refresher){
+  setTimeout(()=>{
+    this._fp.categorias();  
+    this._fp.allpre();
+    //this._fp.mispres();
+    //this._fp.repuestaspre();
+    refresher.complete();
+  },1500)
+}
 
 }

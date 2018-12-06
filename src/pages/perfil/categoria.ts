@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ViewController,Refresher } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TabsPage} from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';
@@ -42,13 +42,16 @@ cate:any[]=[];
     
     data:any=this.cate;
 
-ca(){
-
- 
-  
+ca(){  
   console.log(this.cate);
   this.view.onDidDismiss(this.data);
 }
 
+recargar(refresher:Refresher){
+  setTimeout(()=>{
+    this._fp.categorias();  
+    refresher.complete();
+  },1500)
+}
   
 }

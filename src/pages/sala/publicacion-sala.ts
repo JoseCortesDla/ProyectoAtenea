@@ -29,7 +29,8 @@ savePubli(op:boolean){
   
 	console.log(this.formularioPubli.value);
   console.log(op);
-  this._sp.crearidea(this.sala.id,this.formularioPubli.value.titulo,this.formularioPubli.value.text,'op')
+  console.log(this.sala.id);
+  this._sp.crearidea(this.sala.id,this.formularioPubli.value.text,'op')
   .subscribe(()=>{
         this.navCtrl.pop()    
        })
@@ -40,9 +41,9 @@ savePubli(op:boolean){
 
 buildForm() {
   
-    this.formularioPubli = this.fb.group({               
-      text: ['',Validators.compose([Validators.required,Validators.minLength(15)])]      ,
-      titulo: ['',Validators.compose([Validators.required,Validators.minLength(15)])] 
+    this.formularioPubli = this.fb.group({                     
+      text: ['',Validators.compose([Validators.required,Validators.minLength(15)])]
+      
     });
   }
 
@@ -50,4 +51,6 @@ buildForm() {
   crear(){
     
   }
+
+
 }

@@ -15,50 +15,60 @@ token:string;
               public http: Http,              
               public alert:AlertController,
               private _us:ApiProvider) {
+   
+   // this.unirse('chivas');
   }
 
-   crearidea(id:string,titulo:string,ideat:string,status:string){
+   crearidea(id:string,ideat:string,status:string){
 
-      let headers= new Headers();  
+  let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
     
     let data= new URLSearchParams();
     //Parametros
     data.append("sala_id",id);
-    data.append("descripcion",ideat);
-    data.append("titulo",status);
+    data.append("ideat",ideat);
+    data.append("estado",status);
 
-    let url=URL+"salas";
+    let url=URL+"salas/idea";
 
     return this.http.post(url,data,{headers})
            .map( resp=>{
               let res=resp.json();
-              console.log(res);              
+              console.log(res.message);
+              console.log("stado"+res.status);  
+              
             });
    
 	}
-
-
+re:any[]=[];
 	//unirse a un curso
-	unirse(cod:string){
-
- let headers= new Headers();  
+	unirse(codigo:string){
+    console.log(codigo);
+  let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
     
     let data= new URLSearchParams();
     //Parametros
-    data.append("codigo",id);
+    data.append('codigo',codigo);
 
-    let url=URL+"joinsala";
+
+    let url=URL+"salas/joinsala";
 
     return this.http.post(url,data,{headers})
-           .map( resp=>{
-              let res=resp.json();
-              console.log(res);              
-            });
-	}
+           .map( resp => resp.json() )
+            .subscribe(
+      (data) => { // Success
+        console.log(data);
+      },
+      (error) =>{
+        console.error(error);
+      }
+    )
+   
+  }
 
 
 missalas:any[]=[];
@@ -80,5 +90,28 @@ missalas:any[]=[];
             })
 
    }
+
+
+   ideassala:any[]=[];
+  
+  idesala(id:number){
+        //Parametros
+  let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
+    
+  let url=URL+"salas/"+id;
+
+    return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{            
+             this.ideassala=data.idea;
+              //this.users.push(...data.allpreguntas.data);
+             console.log(this.ideassala);             
+            })
+
+   }
+
+
   }
 

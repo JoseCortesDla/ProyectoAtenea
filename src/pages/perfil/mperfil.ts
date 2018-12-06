@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ModalController,Refresher } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TabsPage} from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';
@@ -42,14 +42,14 @@ cat(){
     console.log(parametros);
   })
 }
-  //carga los datos del perfil
-  
-data={ name:this._us.me.name, 
-       app:this._us.me.apellidoP,
-       apm:this._us.me.apellidoM,
+  //carga los datos del perfil  
+
+  data={  name:this._us.me.name, 
+        app:this._us.me.apellidoP,
+        apm:this._us.me.apellidoM,
         nick:this._us.me.nick,
-      bio:this._us.me.biografia,
-       lema: this._us.me.lema};
+        bio:this._us.me.biografia,
+        lema: this._us.me.lema};
        
    update(){
      
@@ -66,6 +66,11 @@ data={ name:this._us.me.name,
       
    }
   
-
+recargar(refresher:Refresher){
+  setTimeout(()=>{
+    this._us.midatos();  
+    refresher.complete();
+  },1500)
+}
 
 }

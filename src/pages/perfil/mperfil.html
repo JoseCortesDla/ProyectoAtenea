@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content padding>
+	<ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 	<ion-grid >		
 		<ion-row>
 		<div class="px-4 py-3">
@@ -22,21 +25,21 @@
 			      <!--Input nombre-->
 			      <!--Input app-->
 					<ion-item>
-					    <ion-icon name="person" item-start></ion-icon>
+					    <ion-icon name="female" item-start></ion-icon>
 					    <ion-label stacked>Apellido paterno:</ion-label>
 					    <ion-input  type="text"  placeholder="Apellido paterno" name="app" [(ngModel)]="data.app" (ngModelChange)="data.app" value="{{_us.me.apellidoP}}"></ion-input>
         			</ion-item>        			
 			      <!--Input app-->
 			      <!--Input apm-->
 					<ion-item>
-					    <ion-icon name="person" item-start></ion-icon>
+					    <ion-icon name="male" item-start></ion-icon>
 					    <ion-label stacked>Apellido materno:</ion-label>
 					    <ion-input  type="text" placeholder="Apellido materno" name="apm" [(ngModel)]="data.apm" (ngModelChange)="data.apm" value="_us.me.apellidoM" ></ion-input>
         			</ion-item>        			
 			      <!--Input apm-->
 					<!--Input nick-->
 					<ion-item>
-					    <ion-icon name="person" item-start></ion-icon>
+					    <ion-icon name="barcode" item-start></ion-icon>
 					    <ion-label stacked>Nick:</ion-label>
 					    <ion-input  type="text" placeholder="Nick" [(ngModel)]="data.nick" (ngModelChange)="data.nick"  value="_us.me.nick" name="nick"></ion-input>
         			</ion-item>        			
@@ -50,15 +53,15 @@
 				  <!--Input email-->
 				  <!--Input password-->				  	    	 
 		        <ion-item>
-		          <ion-icon name="eye" item-start></ion-icon>
+		          <ion-icon name="analytics" item-start></ion-icon>
 		          <ion-label stacked>Biografia:</ion-label>
 		          <ion-textarea type="textarea" placeholder="Biografia"  [(ngModel)]="data.bio" (ngModelChange)="data.bio" name="bio" value="_us.me.bio"></ion-textarea>
 		        </ion-item>
 				<!--Input password-->						
-				<div class="mt-2" align="center">
+				<!--<div class="mt-2" align="center">
 				  <button ion-button block (click)="cat()">Categoría</button>
 			</div>
-
+				--->
 			<div class="mt-2" align="center">
 				  <button ion-button round >Enviar</button>
 			</div>

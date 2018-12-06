@@ -1,29 +1,32 @@
 <ion-header>
-  <ion-navbar>
-<h1 align="center">Salas</h1>
-
+  <ion-navbar align="center">
+ <ion-title>
+      Sala
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
-
 <ion-content class="card-background-page">
-<ion-grid  *ngFor="let pregun of _sp.missalas" (click)="irSala(pregun)">
+<ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>  
+<ion-grid  *ngFor="let sala of _sp.missalas" (click)="irSala(sala)">
     <ion-row>
 
 <ion-card>
   <ion-item>  
-    <h1>{{pregun.titulo}}</h1>    
+    <h1>{{sala.titulo}}</h1>    
   </ion-item>
   <img src="img/advance-card-bttf.png">
   <ion-card-content>
-  <p>{{pregun.descripcion}}</p>
+  <p>{{sala.descripcion}}</p>
   </ion-card-content>
 </ion-card>
 </ion-row>
 
-  </ion-grid>
+</ion-grid>
 
-   <ion-fab bottom right >
- <button ion-fab mini (click)="addSala()"><ion-icon name="add"></ion-icon></button>
+<ion-fab bottom right> 
+ <button ion-fab mini color="danger" (click)="addSala()"><ion-icon name="ios-add-outline"></ion-icon></button>
 </ion-fab>
 </ion-content>

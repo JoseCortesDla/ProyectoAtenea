@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-     <h1>Atenea</h1>
+  <ion-navbar color="lila">
+     <h1 (ionRefresh)="recargar($event)">Atenea</h1>
     <ion-buttons start>
       <button ion-button icon-only (click)="menuPerfil()">
         <ion-icon name="contact"></ion-icon>
@@ -17,15 +17,14 @@
 </ion-header>
 
 
-<ion-content>  
+<ion-content class="bg-light">  
 
     <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
  
- <ion-grid>
-    <ion-row >
-      <ion-list>
+     
+      <ion-list no-lines>
         <ion-item *ngFor="let pregun of _us.post">
       <ion-avatar item-start>
        <img [src]="pregun.picture.medium" (click)="irPerfil(pregun)">
@@ -36,8 +35,7 @@
     </ion-item>
 
   </ion-list>
-    </ion-row>
-  </ion-grid>
+    
 
 
 </ion-content>

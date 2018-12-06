@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
   <h6 align="center">Selecciona una o mas categorias de interes</h6>
 
 	<ion-list>

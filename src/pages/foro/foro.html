@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar align="center">
     <ion-title>
-      Foros
+      Foro
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content color="primary">
+<ion-content class="bg-ligth">
+  <ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
  <div padding>
   <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="Preguntas">
@@ -14,6 +17,9 @@
     </ion-segment-button>
     <ion-segment-button value="Categoria">
       Categoria
+    </ion-segment-button>
+      <ion-segment-button value="Mspre">
+      Mis preguntas
     </ion-segment-button>
   </ion-segment>
 </div>
@@ -27,7 +33,7 @@
       </ion-avatar>
       <h2>{{pregun.user.name}}</h2>
       <p>{{pregun.titulo}}</p>
-      <p (click)="comentario()">{{pregun.descripcion}} </p>
+      <p (click)="comentario(pregun)">{{pregun.descripcion}} </p>
     </ion-item>
   </ion-list>
 
@@ -37,9 +43,15 @@
     </ion-item>
   </ion-list>
 
+   <ion-list *ngSwitchCase="'Mspre'">
+      <ion-item *ngFor="let pregun of _fp.mspreguntas" (click)="cate(pregun)">
+      <h2>{{pregun.nombre}}</h2>  
+    </ion-item>
+  </ion-list>
+
 </div>
 
  <ion-fab bottom right > 
- <button ion-fab mini (click)="addpublicacion()"><ion-icon name="ios-create-outline"></ion-icon></button>
+ <button ion-fab mini color="danger" (click)="addpublicacion()"><ion-icon name="ios-create-outline"></ion-icon></button>
 </ion-fab>
 </ion-content>

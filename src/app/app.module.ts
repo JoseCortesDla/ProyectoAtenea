@@ -33,6 +33,8 @@ import {  ApiProvider,
           SalasProvider,
           ForoProvider } from '../providers/index.provedores';
 import { HttpModule } from '@angular/http';
+//pipes
+import { PipesModule } from '../pipes/pipes.module';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
@@ -56,10 +58,12 @@ import { IonicStorageModule } from '@ionic/storage';
     PcPage,
     PerfilPage,
 AcercaPage
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    PipesModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -94,6 +98,7 @@ AcercaPage
     SalasProvider,
     ForoProvider,
     EmailComposer,
+  
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     File,
     FileTransfer,

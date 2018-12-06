@@ -6,7 +6,9 @@
 </ion-header>
 <ion-content class="card-background-page">
 
-
+<ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
 <ion-grid>
   <ion-row>
@@ -36,11 +38,13 @@
     <ion-avatar item-start>
       <img src="img/marty-avatar.png" (click)="perfil(sala)">
     </ion-avatar>
-    <h2>{{sala.nombre}}</h2>
-    <p>November 5, 1955</p>
+
+    <h2 *ngIf="!sala.user.estado()">{{sala.user. nombre}}</h2>
+    <h2 *ngIf="sala.user.estado()">Anonimo</h2>
+    <p>{{sala.created_at | moment}}</p>
   </ion-item>
   <ion-card-content >
-    <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+    <p>sala.ideat</p>
   </ion-card-content>
  <!---<button ion-button icon-start clear small (click)="irComment()">
   <ion-icon name="text"></ion-icon>

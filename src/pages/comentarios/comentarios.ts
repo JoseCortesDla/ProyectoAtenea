@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ForoProvider } from '../../providers/api/foro';
 
 
 @Component({
@@ -8,16 +9,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'comentarios.html',
 })
 export class ComentariosPage {
+  preg:any={};
 formularioComen: any;
   constructor(
                 public navCtrl: NavController,
                 public navParams: NavParams,
-                public fb: FormBuilder) {
+                public fb: FormBuilder,
+                private _fp:ForoProvider) {
          this.buildForm();
+         this.preg=this.navParams.get("pregun");
+         this._fp.repuestaspre(this.preg.slug);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComentariosPage');
+    console.log(this.preg);
   }
   comen:any[] = [
     {
@@ -45,13 +51,20 @@ formularioComen: any;
     }
   ];
 
-    coment(value:string){
-      console.log(value);
+comentario:string
+    coment(){
+      console.log(this.formularioComen.value);
+
+      this._fp.res(this.preg.id,this.formularioComen.value)
+      .subscribe(()=>{//tengo que checare esto del data        
+        this.navCtrl.pop()        
+       })
     }
+
     buildForm() {
   
     this.formularioComen = this.fb.group({         
-      text:['',Validators.compose([Validators.required,Validators.minLength(5)])],       
+      text:['',Validators.compose([Validators.required,Validators.minLength(2)])],       
         
        
     });

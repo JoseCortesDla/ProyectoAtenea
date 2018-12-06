@@ -14,6 +14,9 @@
 
 
 <ion-content class="container bg-light">
+	<ion-refresher (ionRefresh)="recargar($event)">
+     <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 	<div class="px-4 py-3">
 			<ion-item round >
 				

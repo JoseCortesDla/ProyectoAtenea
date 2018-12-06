@@ -21,13 +21,11 @@ export class TabsPage {
   tab5Root = BibliotecaPage;
 
   constructor(private _us:ApiProvider,
-  				private navCtrl:NavController,
-          private _fp:ForoProvider) {   
-      
+      				private navCtrl:NavController,
+              private _fp:ForoProvider) {         
     this._us.cargar_storage();
-       if (!this._us.activo()) {
-    this.navCtrl.push(InicioPage)   
+      if (!this._us.activo()) {
+          this.navCtrl.push(InicioPage)   
+         }
   }
-
-}
 }

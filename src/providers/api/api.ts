@@ -1,7 +1,7 @@
 import { Http,URLSearchParams,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Platform,AlertController} from "ionic-angular";
+import {Platform,AlertController,ToastController} from "ionic-angular";
 import {Storage} from '@ionic/storage';
 import { URL } from "../../config/url.servicio";
 
@@ -14,12 +14,13 @@ token:string;
   constructor(private platform:Platform,
               public http: Http,
               public storage:Storage,
-              public alert:AlertController) {
+              public alert:AlertController,
+              private toastCtrl: ToastController) {
               
   }
 
   //Verifica si la sesion esta activa
-  activo():boolean{
+  activo():boolean{      
    return (this.token)? true:false;
       }
  me:any[]=[];     
@@ -66,7 +67,6 @@ midatos(){
               this.guardar_storage();
              }
   					});
-
   }
  //Cerrar sesion
   cerrar_sesion(){
@@ -105,6 +105,7 @@ midatos(){
                      .then( token =>{
                         if (token) {
                           this.token=token;
+
                         }                       
                 resolve();
               })      
@@ -117,6 +118,7 @@ midatos(){
         }
       });
       return promesa;
+    
    }
 
    //Creacion de nueva cuenta  
@@ -201,10 +203,23 @@ let url="https://randomuser.me/api/?results=10";
              //this.post=data;
               //console.log(this.po);
               console.log(this.post);
-              
+             this.presentToast();
 
             })
         
+}
+
+
+presentToast() {
+  let toast = this.toastCtrl.create({
+    message: 'usuarios cargados',
+    duration: 3000,
+    position: 'bottom'
+  });
+    toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+ toast.present();
 }
            
 }
