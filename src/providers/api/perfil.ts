@@ -64,7 +64,8 @@ return this.http.get(url,{headers})
               this.usercat=data.categorias;
               this.userpre=data.pregunta;
             // this.categoria.push(...data.categorias.data);             
-             console.log(this.userInfo);             
+             console.log(this.userInfo);  
+             console.log("esto es del perfil"+this.userpre);
             })
 }
 

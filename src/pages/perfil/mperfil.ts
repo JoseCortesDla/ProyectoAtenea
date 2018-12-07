@@ -44,7 +44,7 @@ cat(){
 }
   //carga los datos del perfil  
 
-  data={  name:this._us.me.name, 
+  data={name:this._us.me.name, 
         app:this._us.me.apellidoP,
         apm:this._us.me.apellidoM,
         nick:this._us.me.nick,
@@ -62,6 +62,7 @@ cat(){
                              this.data.nick)
       .subscribe(()=>{
         this.navCtrl.pop()
+        this._us.midatos();
       })
       
    }

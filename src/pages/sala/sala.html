@@ -10,28 +10,7 @@
      <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-<ion-grid>
-  <ion-row>
-<ion-card >
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="img/marty-avatar.png" (click)="perfil(sala)">
-    </ion-avatar>
-    <h2>{{sala.nombre}}</h2>
-    <p>November 5, 1955</p>
-  </ion-item>
-  <ion-card-content >
-    <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-  </ion-card-content>
- <!--<button ion-button icon-start clear small (click)="irComment()">
-  <ion-icon name="text"></ion-icon>
-      Comentar
-  </button>--->
-    </ion-card>
-</ion-row>
-</ion-grid>
-
-<ion-grid>
+<ion-grid class="mt-1" *ngFor="let idea of _sp.ideassala">
   <ion-row>
 <ion-card >
   <ion-item>
@@ -39,12 +18,12 @@
       <img src="img/marty-avatar.png" (click)="perfil(sala)">
     </ion-avatar>
 
-    <h2 *ngIf="!sala.user.estado()">{{sala.user. nombre}}</h2>
-    <h2 *ngIf="sala.user.estado()">Anonimo</h2>
-    <p>{{sala.created_at | moment}}</p>
+    <h2 *ngIf="idea.estado=='false'">{{idea.user.name}}</h2>
+   <h2 *ngIf="idea.estado=='true'" style="color:#FF0000">Anonimo</h2>
+    <p>{{ idea.created_at}}</p>
   </ion-item>
   <ion-card-content >
-    <p>sala.ideat</p>
+    <p>{{idea.ideat}}</p>
   </ion-card-content>
  <!---<button ion-button icon-start clear small (click)="irComment()">
   <ion-icon name="text"></ion-icon>

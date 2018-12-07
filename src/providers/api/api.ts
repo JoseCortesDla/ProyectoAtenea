@@ -71,8 +71,7 @@ midatos(){
  //Cerrar sesion
   cerrar_sesion(){
     this.token=null;
-   this.guardar_storage();
-    console.log(this.token);
+   this.guardar_storage();      
   }
 
    //Guarda la sesion cuando inicia

@@ -91,8 +91,7 @@ return this.http.get(url,{headers})
 }
    
 preguntas:any[]=[];
-allpre(){
-     
+allpre(){     
     //Parametros
   let headers= new Headers();  
   headers.append('Content-Type','application/json');  
@@ -102,20 +101,17 @@ allpre(){
 
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
-            .subscribe( data=>{            
-    
-            this.preguntas.push(...data.allpreguntas.data);
-            
+            .subscribe( data=>{             
+            this.preguntas.push(...data.allpreguntas.data);           
              console.log(this.preguntas);             
             })
 }
 
 mspreguntas:any[]=[];
-mispre(){
-     
+mispe(){     
     //Parametros
   let headers= new Headers();  
-  headers.append('Content-Type','application/json');  
+  headers.append('Content-type','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
     
   let url=URL+"mspreguntas";
@@ -123,36 +119,29 @@ mispre(){
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             //this.preguntas=data;
-            this.mspreguntas.push(...data.mspreguntas.data);
+             //this.mspreguntas=data.data.data;
+            this.mspreguntas.push(...data.data);
             
-             console.log(this.mspreguntas);             
+             console.log("noooo"+this.mspreguntas);             
             })
 } 
    
-   repregunta:any[]=[];
-
-   /*
-repuestaspre(slug:string){
-     
+   mispre(){     
     //Parametros
   let headers= new Headers();  
   headers.append('Accept','application/json');  
-  headers.append('Authorization','Bearer '+this._us.token);  
-
-  let url=URL+"foro/"+slug;
-  console.log(url);
+  headers.append('Authorization','Bearer '+this._us.token);
+    
+  let url=URL+"mspreguntas";
 
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
-            .subscribe( data=>{            
-             this.repregunta=data;
-           
-             console.log("aqi las respuestas"+this.repregunta);             
+            .subscribe( data=>{             
+            this.mspreguntas.push(...data.data.data);           
+             console.log(this.mspreguntas);             
             })
 }
-*/
-
+   repregunta:any[]=[];
 repuestaspre(slug:string){
      
     //Parametros
@@ -174,14 +163,14 @@ repuestaspre(slug:string){
 
 
 res(id:string,re:string){
-     
+     console.log("qq"+re);
      let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);   
     let data= new URLSearchParams();
     //Parametros
     data.append("pregunta_id",id);
-    data.append("respuesta","josejosejosejsjsjjsjsjaklsaklkskkdljlfjdasjkljkldasjkadsljklasdjksadjkasjkasjkaskajlsjkasdjkasdjkasdjkl");    
+    data.append("respuesta",re);
 
 
     let url=URL+"forores";

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Refresher } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ForoProvider } from '../../providers/api/foro';
 
@@ -51,11 +51,20 @@ formularioComen: any;
     }
   ];
 
+   recargar(refresher:Refresher){
+  setTimeout(()=>{
+    this._fp.repuestaspre(this.preg.slug);      
+    //this._fp.mispres();
+    //this._fp.repuestaspre();
+    refresher.complete();
+  },1500)
+}
+
 comentario:string
     coment(){
       console.log(this.formularioComen.value);
 
-      this._fp.res(this.preg.id,this.formularioComen.value)
+      this._fp.res(this.preg.id,this.formularioComen.value.text)
       .subscribe(()=>{//tengo que checare esto del data        
         this.navCtrl.pop()        
        })

@@ -7,6 +7,7 @@ import {ApiProvider} from  '../../providers/api/api';
 import { MperfilPage } from './mperfil';
 import { ForoProvider } from '../../providers/api/foro';
 import { PerfilProvider } from '../../providers/api/perfil';
+import { ComentariosPage } from '../comentarios/comentarios';
 import * as moment from 'moment';
 
 @Component({
@@ -34,7 +35,9 @@ export class PerfilPage {
     console.log(navParams);
     this.date=moment()
   }
-
+comentario(pregun:any){
+    this.navCtrl.push(ComentariosPage,{pregun})
+  }
  
 
   mperfil(){

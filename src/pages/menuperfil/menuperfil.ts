@@ -31,9 +31,12 @@ export class MenuperfilPage {
   		this.navCtrl.push(PerfilPage)
   	}
 
-    cerrar_sesion(){
+    cerrar(){
       this._us.cerrar_sesion();
-      this.navCtrl.push(InicioPage)
+      this._us.cargar_storage();
+      if (!this._us.activo()) {
+          this.navCtrl.push(InicioPage)   
+         }
     }
 
     acerca(){
