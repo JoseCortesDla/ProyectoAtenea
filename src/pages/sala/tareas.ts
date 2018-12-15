@@ -4,14 +4,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'page-publicacion-sala',
-  templateUrl: 'publicacion-sala.html',
+  selector: 'page-tareas',
+  templateUrl: 'tareas.html',
 })
 
-export class PublicacionSalaPage {
+export class TareasPage {
 formularioPubli:any;
+
+	sala:any=[];
   constructor(public navCtrl: NavController, 
   	public fb: FormBuilder,public navParams: NavParams) {
+  	this.sala=this.navParams.get('sala');
   }
+
+
   
 }

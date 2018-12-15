@@ -1,9 +1,7 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Información</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
@@ -12,63 +10,69 @@
     </ion-refresher>
 	<ion-grid >		
 		<ion-row>
-		<div class="px-4 py-3">
+		<div class="px-5 py-3" align="center">
 			<form (ngSubmit)="update()">
-				<ion-list>
-
-					<!--Input nombre-->
+			
+						<img class="im" [src]="_us.me.foto | urlfoto">
+				<br>
+					<button ion-button (click)="mostrar_camara()">
+						Camara
+					</button>
+					<button ion-button (click)="seleccionar_foto()">
+						Seleccionar
+					</button>
+						<!--Input nombre-->
+							<ion-list>
 					<ion-item>
 					    <ion-icon name="person" item-start></ion-icon>
 					    <ion-label stacked>Nombre:</ion-label>
-					    <ion-input type="text" placeholder="Nombre" name="name" [(ngModel)]="data.name" (ngModelChange)="data.name" ></ion-input>
+					    <ion-input type="text" placeholder="Nombre" name="name" [(ngModel)]="name"(ngModelChange)="name"  ></ion-input>
         			</ion-item>        			
-			      <!--Input nombre-->
-			      <!--Input app-->
+			      	<!--Input nombre-->
+			      	<!--Input app-->
 					<ion-item>
 					    <ion-icon name="female" item-start></ion-icon>
 					    <ion-label stacked>Apellido paterno:</ion-label>
-					    <ion-input  type="text"  placeholder="Apellido paterno" name="app" [(ngModel)]="data.app" (ngModelChange)="data.app" value="{{_us.me.apellidoP}}"></ion-input>
+					    <ion-input  type="text"  placeholder="Apellido paterno" name="app" [(ngModel)]="app" (ngModelChange)="app" value="{{_us.me.apellidoP}}"></ion-input>
         			</ion-item>        			
-			      <!--Input app-->
-			      <!--Input apm-->
+			      	<!--Input app-->
+			      	<!--Input apm-->
 					<ion-item>
 					    <ion-icon name="male" item-start></ion-icon>
 					    <ion-label stacked>Apellido materno:</ion-label>
-					    <ion-input  type="text" placeholder="Apellido materno" name="apm" [(ngModel)]="data.apm" (ngModelChange)="data.apm" value="_us.me.apellidoM" ></ion-input>
+					    <ion-input  type="text" placeholder="Apellido materno" name="apm" [(ngModel)]="apm" (ngModelChange)="apm" value="_us.me.apellidoM" ></ion-input>
         			</ion-item>        			
-			      <!--Input apm-->
+			      	<!--Input apm-->
 					<!--Input nick-->
 					<ion-item>
 					    <ion-icon name="barcode" item-start></ion-icon>
 					    <ion-label stacked>Nick:</ion-label>
-					    <ion-input  type="text" placeholder="Nick" [(ngModel)]="data.nick" (ngModelChange)="data.nick"  value="_us.me.nick" name="nick"></ion-input>
+					    <ion-input  type="text" placeholder="Nick" [(ngModel)]="nick" (ngModelChange)="nick"  value="_us.me.nick" name="nick"></ion-input>
         			</ion-item>        			
-			      <!--Input nick-->
-			      <!--Input email-->
+			      	<!--Input nick-->
+			      	<!--Input email-->
 					<ion-item>
 					    <ion-icon name="mail" item-start></ion-icon>
 					    <ion-label stacked>Lema:</ion-label>
-					    <ion-textarea  type="textarea" placeholder="lema" name="lema" [(ngModel)]="data.lema" (ngModelChange)="data.lema" value="data.lema"></ion-textarea>
+					    <ion-textarea  type="textarea" placeholder="lema" name="lema" [(ngModel)]="lema" (ngModelChange)="lema" value="data.lema"></ion-textarea>
         			</ion-item>			        
-				  <!--Input email-->
-				  <!--Input password-->				  	    	 
-		        <ion-item>
-		          <ion-icon name="analytics" item-start></ion-icon>
-		          <ion-label stacked>Biografia:</ion-label>
-		          <ion-textarea type="textarea" placeholder="Biografia"  [(ngModel)]="data.bio" (ngModelChange)="data.bio" name="bio" value="_us.me.bio"></ion-textarea>
-		        </ion-item>
-				<!--Input password-->						
-				<!--<div class="mt-2" align="center">
-				  <button ion-button block (click)="cat()">Categoría</button>
-			</div>
-				--->
-			<div class="mt-2" align="center">
-				  <button ion-button round >Enviar</button>
-			</div>
-		</ion-list>
-	</form>
-		
-	</div>
-</ion-row>
+				  	<!--Input email-->
+				  	<!--Input password-->				  	    	 
+		        	<ion-item>
+		          		<ion-icon name="analytics" item-start></ion-icon>
+		          		<ion-label stacked>Biografia:</ion-label>
+		          		<ion-textarea type="textarea" placeholder="Biografia"  [(ngModel)]="bio" (ngModelChange)="bio" name="bio" value="_us.me.bio"></ion-textarea>
+		        	</ion-item>
+					<!--Input password-->						
+					<!--<div class="mt-2" align="center">
+				  	<button ion-button block (click)="cat()">Categoría</button>
+					</div>--->
+					<div align="center">
+				  		<button  class="btn" ion-button round >Enviar</button>
+					</div>
+				</ion-list>
+			</form>		
+		</div>
+	</ion-row>
 	</ion-grid>
 </ion-content>

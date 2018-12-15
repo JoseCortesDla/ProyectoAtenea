@@ -93,7 +93,9 @@ missalas:any[]=[];
 
 
    ideassala:any[]=[];
-  
+   tareassala:any[]=[];
+    miembros:any[]=[];
+     test:any[]=[];
   idesala(id:number){
         //Parametros
   let headers= new Headers();  
@@ -106,8 +108,13 @@ missalas:any[]=[];
            .map( resp => resp.json() )
             .subscribe( data=>{            
              this.ideassala=data.idea;
+             this.tareassala=data.tareas;
+             this.miembros=data.users;
+             this.test=data.tests;
               //this.users.push(...data.allpreguntas.data);
-             console.log(this.ideassala);             
+             console.log(this.ideassala);  
+             console.log(this.tareassala);
+
             })
 
    }

@@ -31,12 +31,11 @@ export class PerfilPage {
     public navParams:NavParams
   ) {
    
-    //this.user=this.navParams.get("us");
-    console.log(navParams);
+   // this.user=this.navParams.get("us");
     this.date=moment()
   }
-comentario(pregun:any){
-    this.navCtrl.push(ComentariosPage,{pregun})
+comentario(pregun:any,name:string){
+    this.navCtrl.push(ComentariosPage,{pregun,name})
   }
  
 
@@ -46,7 +45,7 @@ comentario(pregun:any){
 
 recargar(refresher:Refresher){
   setTimeout(()=>{
-    this._pp.infous();  
+    this._pp.infous(this.user.nick);  
     refresher.complete();
   },1500)
 }

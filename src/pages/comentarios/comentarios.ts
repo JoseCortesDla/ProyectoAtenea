@@ -2,28 +2,36 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Refresher } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ForoProvider } from '../../providers/api/foro';
-
-
+import { ApiProvider } from '../../providers/api/api';
+import { PerfilPage } from '../perfil/perfil';
+import { PerfilProvider } from '../../providers/api/perfil';
 @Component({
   selector: 'page-comentarios',
   templateUrl: 'comentarios.html',
 })
 export class ComentariosPage {
   preg:any={};
+  us:any={};
 formularioComen: any;
   constructor(
                 public navCtrl: NavController,
                 public navParams: NavParams,
                 public fb: FormBuilder,
-                private _fp:ForoProvider) {
+                private _fp:ForoProvider,
+                private _us:ApiProvider,
+                  private _pp:PerfilProvider) {
          this.buildForm();
          this.preg=this.navParams.get("pregun");
+         this.us=this.navParams.get("user");
          this._fp.repuestaspre(this.preg.slug);
+         console.log(this.us);
+         
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComentariosPage');
-    console.log(this.preg);
+   
   }
   comen:any[] = [
     {
@@ -59,6 +67,12 @@ formularioComen: any;
     refresher.complete();
   },1500)
 }
+
+
+  perfil(us:string){
+    this._pp.infous(us);
+    this.navCtrl.push(PerfilPage)
+  }
 
 comentario:string
     coment(){

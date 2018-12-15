@@ -17,9 +17,7 @@ token:string;
               private _us:ApiProvider,
               private toastCtrl: ToastController
               ) {
-    
-    this.categorias();
-    this.mispre();
+  
   }
 
 
@@ -40,7 +38,8 @@ token:string;
            .map( resp=>{
               let res=resp.json();
               console.log(res); 
-              this.presentToast('1');            
+              this.presentToast(1);  
+              this.mispre() ;
             });
    
 }
@@ -89,7 +88,26 @@ return this.http.get(url,{headers})
              console.log(this.cafa);             
             })
 }
-   
+ 
+pc:any[]=[];
+porcategoria(id:number){
+  let headers= new Headers();  
+  headers.append('Accept','application/json');  
+  headers.append('Authorization','Bearer '+this._us.token);
+
+let url=URL+"foro/categoria/"+id;
+
+return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{    
+                           
+            //  this.pc=data.data;
+            this.pc.push(...data.data);             
+
+             console.log(this.pc);             
+            })
+}
+
 preguntas:any[]=[];
 allpre(){     
     //Parametros

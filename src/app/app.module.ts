@@ -17,13 +17,14 @@ import {SalaPage,
         ComentariosPage,
         PublicacionSalaPage,
         MenuperfilPage,
-        PerfilPage,
-        PublicacionPage,
+        PerfilPage,        
         MperfilPage,
         AcercaPage,
         CategoriaPage,
         PcPage,
-        LoginPage} from '../pages/index.paginas';
+        MsalasPage,
+        LoginPage,
+        PublicacionPage} from '../pages/index.paginas';
 
 //Provedores de servicios
 import {  ApiProvider, 
@@ -33,6 +34,8 @@ import {  ApiProvider,
           SalasProvider,
           ForoProvider } from '../providers/index.provedores';
 import { HttpModule } from '@angular/http';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 //pipes
 import { PipesModule } from '../pipes/pipes.module';
 
@@ -57,7 +60,9 @@ import { IonicStorageModule } from '@ionic/storage';
     CategoriaPage,
     PcPage,
     PerfilPage,
-AcercaPage
+    AcercaPage,
+    MsalasPage,
+    TareasPage
 
   ],
   imports: [
@@ -86,7 +91,9 @@ AcercaPage
     MperfilPage,
     AcercaPage,
     PcPage,
-    CategoriaPage
+    CategoriaPage,
+    MsalasPage,
+    TareasPage
   ],
   providers: [
     StatusBar,
@@ -98,7 +105,8 @@ AcercaPage
     SalasProvider,
     ForoProvider,
     EmailComposer,
-  
+     Camera,
+     ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     File,
     FileTransfer,

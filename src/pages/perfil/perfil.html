@@ -1,33 +1,24 @@
-<!--
-  Generated template for the PerfilPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{user.name}}</ion-title>
-    
+    <ion-title>{{_pp.userInfo.nick}}</ion-title>    
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content class="card-background-page">
-<ion-refresher (ionRefresh)="recargar($event)">
+  <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
+  </ion-refresher>
 	<div align="center">
-   <img [src]="user.foto"> 
-   <h1>{{_pp.userInfo.name}}</h1>
-   <p>
+   <div class="bg-light">
+    <img class="im" [src]="_pp.userInfo.foto | urlfoto"> 
+  </div>
+    <h1>{{_pp.userInfo.name}}</h1>
+    <p>
      {{_pp.userInfo.lema}}
-   </p>
-    
-       <button ion-button clear  *ngIf="_us.me.email==_pp.userInfo.email" (click)="mperfil()">
+    </p>  
+    <button ion-button clear  *ngIf="_us.me.email==_pp.userInfo.email" (click)="mperfil()">
         Editar
-      </button>
+    </button>
    <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="Informacion">
       Información
@@ -36,65 +27,65 @@
       Interes
     </ion-segment-button>
   </ion-segment>
-</div>
-<div [ngSwitch]="pet">
-  <ion-list *ngSwitchCase="'Informacion'">
-     <ion-item>
-    <ion-icon name="mail" item-start></ion-icon>
-      {{_pp.userInfo.email}}
-  </ion-item>
-  <ion-item>
-    <ion-icon name="male" item-start></ion-icon>
-      {{_pp.userInfo.apellidoP}}
-    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="female" item-start></ion-icon>
-      {{_pp.userInfo.apellidoM}}  
-  </ion-item>
-  <ion-item>
-    <ion-icon name="barcode" item-start></ion-icon>
-      {{_pp.userInfo.nick}}    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="analytics" item-start></ion-icon>
-      {{_pp.userInfo.biografia}}    
-  </ion-item>
-  <ion-item>
-    <ion-icon name="calendar" item-start></ion-icon>
-     Se unio hace {{_pp.userInfo.created_at}}    
-  </ion-item>
-  </ion-list>
-  <ion-list *ngSwitchCase="'Intereses'">   
-  <ion-item *ngFor="let cat of _pp.usercat">       
-    <ion-icon name="bulb" item-start></ion-icon>
-    {{cat.nombre}}    
-  </ion-item>                                                                               
-  </ion-list>
   </div>
-  <div>
-  <ion-grid *ngFor="let user of _pp.userpre">
-<ion-row>
-  <ion-card>
-  <ion-item>
-    <ion-avatar item-start>
-  <img src="assets/imgs/logo.png">    
-    </ion-avatar>
-    <h2 (click)="perfil()">{{_pp.userInfo.name}}</h2>
-    <p>{{date}}</p>
-  </ion-item>
-  
-  <ion-card-content>
-    <p>{{user.descripcion}}</p>
-    
-  </ion-card-content>
-
-      <button ion-button icon-start clear small (click)="comentario(user.pregunta)">
-        <ion-icon name="text"></ion-icon>
-        Comentar
-      </button>
-    </ion-card>
-  </ion-row>
-</ion-grid> 
+  <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'Informacion'">
+         <ion-item>
+        <ion-icon name="mail" item-start></ion-icon>
+          {{_pp.userInfo.email}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="male" item-start></ion-icon>
+          {{_pp.userInfo.apellidoP}}
+        
+      </ion-item>
+      <ion-item>
+        <ion-icon name="female" item-start></ion-icon>
+          {{_pp.userInfo.apellidoM}}  
+      </ion-item>
+      <ion-item>
+        <ion-icon name="barcode" item-start></ion-icon>
+          {{_pp.userInfo.nick}}    
+      </ion-item>
+      <ion-item>
+        <ion-icon name="analytics" item-start></ion-icon>
+          {{_pp.userInfo.biografia}}    
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+         <div *ngIf="_us.me.email==_pp.userInfo.email"> Te uniste hace {{_pp.userInfo.created_at | moment}}
+         </div>
+         <div *ngIf="_us.me.email!=_pp.userInfo.email"> Se unio hace {{_pp.userInfo.created_at | moment}}
+         </div>
+      </ion-item>
+      </ion-list>
+    <ion-list *ngSwitchCase="'Intereses'">   
+      <ion-item *ngFor="let cat of _pp.usercat">       
+        <ion-icon name="bulb" item-start></ion-icon>
+        {{cat.nombre}}    
+      </ion-item>                                                                               
+    </ion-list>
+  </div>
+  <div class="mt-2">
+    <ion-grid *ngFor="let pregunta of _pp.userpre" >
+      <ion-row>
+        <ion-card>
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">    
+            </ion-avatar>
+            <h2 (click)="perfil()">{{_pp.userInfo.name}}</h2>
+            <p>{{pregunta.created_at | moment}}</p>
+          </ion-item>
+          <ion-card-content align="left" (click)="comentario(pregunta,_pp.userInfo.name)">
+            <p>{{pregunta.descripcion}}</p>    
+          </ion-card-content>
+            <!--<button ion-button icon-start clear small (click)="comentario(user.pregunta)">
+              <ion-icon name="text"></ion-icon>
+              Comentar
+            </button>-->
+        </ion-card>
+      </ion-row>
+    </ion-grid> 
   </div>
 </ion-content>

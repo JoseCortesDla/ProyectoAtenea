@@ -1,41 +1,51 @@
 <ion-header>
   <ion-navbar>
-<h1 align="center">{{sala.poder}}</h1>
+   
+    <ion-buttons start>
+      <button ion-button icon-only (click)="menuPerfil()">
+        <ion-icon name="people"></ion-icon>
+      </button>
+    </ion-buttons>
+     <h1 >{{sala.titulo}}</h1>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="menuPerfil()">
+        <ion-icon name="attach"></ion-icon>
+      </button> 
+      <button ion-button icon-only (click)="tarea()">
+        <ion-icon name="book"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-<ion-content class="card-background-page">
 
-<ion-refresher (ionRefresh)="recargar($event)">
+<ion-content class="card-background-page">
+    <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-
-<ion-grid class="mt-1" *ngFor="let idea of _sp.ideassala">
-  <ion-row>
-<ion-card >
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="img/marty-avatar.png" (click)="perfil(sala)">
-    </ion-avatar>
-
-    <h2 *ngIf="idea.estado=='false'">{{idea.user.name}}</h2>
-   <h2 *ngIf="idea.estado=='true'" style="color:#FF0000">Anonimo</h2>
-    <p>{{ idea.created_at}}</p>
-  </ion-item>
-  <ion-card-content >
-    <p>{{idea.ideat}}</p>
-  </ion-card-content>
- <!---<button ion-button icon-start clear small (click)="irComment()">
-  <ion-icon name="text"></ion-icon>
-      Comentar
-  </button>--->
-    </ion-card>
-</ion-row>
-</ion-grid>
-   
-<ion-fab bottom right >
- <button ion-fab mini (click)="irPubli(sala)"><ion-icon name="ios-create-outline"></ion-icon></button>
-</ion-fab>
-
-
+    <div class=" container mt-2" *ngFor="let idea of _sp.ideassala">
+    <ion-grid  >
+      <ion-row>
+      <ion-card >
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="idea.user.foto" (click)="perfil(sala)">
+          </ion-avatar>
+          <h2 *ngIf="idea.estado=='false'">{{idea.user.name}}</h2>
+          <h2 *ngIf="idea.estado=='true'" style="color:#FF0000">Anonimo</h2>
+          <p>{{idea.created_at | moment}}</p>
+        </ion-item>
+        <ion-card-content >
+          <p>{{idea.ideat}}</p>
+        </ion-card-content>
+       <!---<button ion-button icon-start clear small (click)="irComment()">
+        <ion-icon name="text"></ion-icon>
+            Comentar
+        </button>--->
+      </ion-card>
+      </ion-row>
+    </ion-grid>  
+    </div>
+    <ion-fab bottom right >
+       <button ion-fab mini (click)="irPubli(sala)"><ion-icon name="ios-create-outline"></ion-icon></button>
+    </ion-fab>
 </ion-content>

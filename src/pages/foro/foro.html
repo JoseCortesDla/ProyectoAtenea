@@ -9,14 +9,14 @@
 <ion-content class="bg-ligth">
   <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
+  </ion-refresher>
  <div padding>
   <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="Preguntas">
       Preguntas
     </ion-segment-button>
     <ion-segment-button value="Categoria">
-      Categoria
+      Categoría
     </ion-segment-button>
       <ion-segment-button value="Mspre">
       Mis preguntas
@@ -29,29 +29,28 @@
   <ion-list *ngSwitchCase="'Preguntas'">
     <ion-item *ngFor="let pregun of _fp.preguntas" >
       <ion-avatar item-start>
-    <ion-icon name="person" md (click)=perfil(pregun.user.nick)></ion-icon>        
+    <img [src]="pregun.user.foto | urlfoto" (click)=perfil(pregun.user.nick)>       
       </ion-avatar>
-      <h2>{{pregun.user.name}}</h2>
-      <p>{{pregun.titulo}}</p>
-      <p (click)="comentario(pregun)">{{pregun.descripcion}} </p>
+     <I> <h2>{{pregun.user.name}}</h2></I>
+      <p>{{pregun.categoria.nombre}}</p>
+      <p (click)="comentario(pregun,pregun.user)" align="left">{{pregun.descripcion}} </p>
     </ion-item>
   </ion-list>
-
   <ion-list *ngSwitchCase="'Categoria'">
       <ion-item *ngFor="let pregun of _fp.categoria" (click)="cate(pregun)">
       <h2>{{pregun.nombre}}</h2>  
     </ion-item>
   </ion-list>
-
-   <ion-list *ngSwitchCase="'Mspre'">
-      <ion-item *ngFor="let pregun of _fp.mspreguntas" (click)="comentario(pregun)">
-      <h2>{{pregun.titulo}}</h2>  
+  <ion-list *ngSwitchCase="'Mspre'">
+      <ion-item *ngFor="let pregun of _fp.mspreguntas" (click)="comentario(pregun,_us.me)">
+      <h2>{{pregun.categoria.nombre}}</h2>  
     <p style="word-break: break-all;"> {{pregun.descripcion}}</p>
     </ion-item>
   </ion-list>
-
 </div>
- <ion-fab bottom right > 
+
+<ion-fab bottom right > 
  <button ion-fab mini color="danger" (click)="addpublicacion()"><ion-icon name="ios-create-outline"></ion-icon></button>
 </ion-fab>
+
 </ion-content>

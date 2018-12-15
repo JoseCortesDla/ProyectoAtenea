@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tarea</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content class="container bg-light">
+
+    <ion-grid *ngFor="let tarea of sala.tareas" >
+      <ion-row>
+      <ion-card >
+     
+        <ion-card-content >
+          <p>{{tarea.descripcion}}</p>
+        </ion-card-content>      
+      </ion-card>
+      </ion-row>
+    </ion-grid> 
+    
+</ion-content>

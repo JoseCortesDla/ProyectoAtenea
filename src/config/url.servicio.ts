@@ -1,1 +1,2 @@
-export const URL="http://7a1e2b41.ngrok.io/api/auth/";
+export const URL="http://127.0.0.1:8000/api/auth/";
+export const URLFOTO="http://127.0.0.1/";

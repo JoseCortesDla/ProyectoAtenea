@@ -4,7 +4,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
 	<div class="container">
 		<div class="container display-4 mt-5 pt-5" align="center">
@@ -15,82 +14,64 @@
 		<div class="px-4 py-3">
 			<form [formGroup]="formularioUsuario" (ngSubmit)="saveData()">
 				<ion-list>
-
-					<!--Input nick-->
+					<!--Input name-->
 					<ion-item>
 					    <ion-icon name="person" item-start></ion-icon>
 					    <ion-label stacked>Nombre:</ion-label>
 					    <ion-input formControlName="name" type="text" placeholder="Nombre" name="name"></ion-input>
         			</ion-item>
         			<ion-item *ngIf="formularioUsuario.get('name').errors && formularioUsuario.get('name').dirty">
-			          <p *ngIf="formularioUsuario.get('name').hasError('required')" class="error">
-			            El name es requerido.
-			          </p>
-			          <p *ngIf="formularioUsuario.get('nick').hasError('minlength')" class="error">
-			            El minimo de caracteres es 5
-			          </p>
-			      </ion-item>
-			      <!--Input nick-->
-					<!--Input nick-->
+			          <p *ngIf="formularioUsuario.get('name').hasError('required')" class="error">El name es requerido.</p>
+			          <p *ngIf="formularioUsuario.get('nick').hasError('minlength')" class="error">El mínimo de caracteres es 5</p>
+			        </ion-item>
+			        <!--Input name-->
+ 				    <!--Input nick-->
 					<ion-item>
 					    <ion-icon name="person" item-start></ion-icon>
 					    <ion-label stacked>Nick:</ion-label>
 					    <ion-input formControlName="nick" type="text" placeholder="Nick" name="nick"></ion-input>
         			</ion-item>
         			<ion-item *ngIf="formularioUsuario.get('nick').errors && formularioUsuario.get('nick').dirty">
-			          <p *ngIf="formularioUsuario.get('nick').hasError('required')" class="error">
-			            El nick es requerido.
-			          </p>
-			          <p *ngIf="formularioUsuario.get('nick').hasError('minlength')" class="error">
-			            El minimo de caracteres es 5
-			          </p>
-			      </ion-item>
-			      <!--Input nick-->
-			      <!--Input email-->
+			          <p *ngIf="formularioUsuario.get('nick').hasError('required')" class="error">El nick es requerido.</p>
+			          <p *ngIf="formularioUsuario.get('nick').hasError('minlength')" class="error">El mínimo de caracteres es 5</p>
+			      	</ion-item>
+			      	<!--Input nick-->
+			      	<!--Input email-->
 					<ion-item>
 					    <ion-icon name="mail" item-start></ion-icon>
 					    <ion-label stacked>Email:</ion-label>
 					    <ion-input formControlName="email" type="email" placeholder="email" name="email"></ion-input>
         			</ion-item>
 			        <ion-item *ngIf="formularioUsuario.get('email').errors && formularioUsuario.get('email').dirty" class="error">
-			          <p color="danger" *ngIf="formularioUsuario.get('email').hasError('required')" class="error">
-			            El correo es requerido.
-			          </p>
-			          <p *ngIf="formularioUsuario.get('email').hasError('email')" class="error">
-			            El correo electronico indicado no es valido.
-			          </p>
-			      </ion-item>
-				  <!--Input email-->
-				  <!--Input password-->				  	    	 
-		        <ion-item>
-		          <ion-icon name="eye" item-start></ion-icon>
-		          <ion-label stacked>Contraseña:</ion-label>
-		          <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
-		        </ion-item>
-		         <ion-item *ngIf="formularioUsuario.get('password').errors && formularioUsuario.get('password').dirty" class="error">			         
-					    <p *ngIf="formularioUsuario.get('password').hasError('password')" class="error">
-					    El correo electronico indicado no es valido.
-					     </p>
-				</ion-item>
-				<!--Input password-->
-				<!--Input passwordConfirm-->
-		        <ion-item>
-	          <ion-icon name="eye" item-start></ion-icon>
-	          <ion-label stacked>Confirmar contraseña:</ion-label>
-	          <ion-input formControlName="passwordConfirmation" type="password" placeholder="Confirmar contraseña"></ion-input>
-	        </ion-item>
-
-	         <ion-item *ngIf="formularioUsuario.get('passwordConfirmation').errors && formularioUsuario.get('passwordConfirmation').dirty" class="error">			         
-				          <p *ngIf="formularioUsuario.get('passwordConfirmation').hasError('passwordConfirmation')" class="error">
-				            El correo electronico indicado no es valido.
-				          </p>
-	      </ion-item>
-	      <!--Input passwordConfirmation-->
-		</ion-list>											
-			<div class="mt-2" align="center">
+			          <p color="danger" *ngIf="formularioUsuario.get('email').hasError('required')" class="error">El correo es requerido.</p>
+			          <p *ngIf="formularioUsuario.get('email').hasError('email')" class="error">El correo electronico indicado no es valido.</p>
+			      	</ion-item>
+				  	<!--Input email-->
+				  	<!--Input password-->				  	    	 
+			        <ion-item>
+			          <ion-icon name="eye" item-start></ion-icon>
+			          <ion-label stacked>Contraseña:</ion-label>
+			          <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+			        </ion-item>
+			        <ion-item *ngIf="formularioUsuario.get('password').errors && formularioUsuario.get('password').dirty" class="error">			         
+						    <p *ngIf="formularioUsuario.get('password').hasError('password')" class="error">El mínimo de caracteres es de 6</p>
+					</ion-item>
+					<!--Input password-->
+					<!--Input passwordConfirm-->
+			        <ion-item>
+			          <ion-icon name="eye" item-start></ion-icon>
+			          <ion-label stacked>Confirmar contraseña:</ion-label>
+			          <ion-input formControlName="passwordConfirmation" type="password" placeholder="Confirmar contraseña"></ion-input>
+		        	</ion-item>
+		         	<ion-item *ngIf="formularioUsuario.get('passwordConfirmation').errors && formularioUsuario.get('passwordConfirmation').dirty" class="error">			         
+					          <p *ngIf="formularioUsuario.get('passwordConfirmation').hasError('passwordConfirmation')" class="error">El mínimo de caracteres es de 6</p>
+		      		</ion-item>
+		      		<!--Input passwordConfirmation-->
+				</ion-list>											
+				<div class="mt-2" align="center">
 				  <button ion-button round [disabled]="!formularioUsuario.valid">Enviar</button>
-			</div>
-		</form>
-	</div>
+				</div>
+			</form>
+		</div>
 	</div>
 </ion-content>

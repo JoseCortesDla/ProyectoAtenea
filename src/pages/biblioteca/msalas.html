@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar align="center">
+   <ion-title>
+      Biblioteca
+    </ion-title>
+</ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+    <ion-refresher (ionRefresh)="recargar($event)">
+         <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>  
+      <ion-list  *ngFor="let sala of _sp.missalas" (click)="irBiblioteca(sala)">        
+          <ion-item>  
+                <h1>{{sala.titulo}}</h1>    
+          </ion-item>
+                  <img src="">          
+          
+        </ion-list>   
+</ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{cat.nombre}}
+      {{cate.nombre}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,14 +9,14 @@
 <ion-content>
 	<ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-  <ion-list>
-    <ion-item *ngFor="let pregun of mutantes" (click)="comentario()">
+  </ion-refresher>
+  <ion-list >
+    <ion-item *ngFor="let pregun of _fp.pc" >
       <ion-avatar item-start>
-    <ion-icon name="person" md></ion-icon>        
+    <ion-icon name="person" md (click)=perfil(pregun.user.nick)></ion-icon>        
       </ion-avatar>
-      <h2>{{pregun.nombre}}</h2>
-      <p>{{pregun.poder}}</p>
+     <I> <h2>{{pregun.user.name}}</h2></I>      
+      <p (click)="comentario(pregun,pregun.user.name)" align="left">{{pregun.descripcion}} </p>
     </ion-item>
   </ion-list>
 </ion-content>

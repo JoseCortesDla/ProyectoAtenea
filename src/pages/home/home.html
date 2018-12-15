@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar color="lila">
      <h1 (ionRefresh)="recargar($event)">Atenea</h1>
     <ion-buttons start>
@@ -7,7 +6,6 @@
         <ion-icon name="contact"></ion-icon>
       </button>
     </ion-buttons>
-
     <ion-buttons end>
       <button *ngIf="_us.activo()" ion-button icon-only (click)="_us.cerrar_sesion()">
        Salir
@@ -16,26 +14,17 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content class="bg-light">  
-
     <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
- 
-     
+    </ion-refresher>     
       <ion-list no-lines>
         <ion-item *ngFor="let pregun of _us.post">
       <ion-avatar item-start>
        <img [src]="pregun.picture.medium" (click)="irPerfil(pregun)">
       </ion-avatar>
       <p>{{pregun.name.title}}</p>
-      <p>{{pregun.email}}</p>
-      
+      <p>{{pregun.email}}</p>      
     </ion-item>
-
-  </ion-list>
-    
-
-
+  </ion-list>    
 </ion-content>

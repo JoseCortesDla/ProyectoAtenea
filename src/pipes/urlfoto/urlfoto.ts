@@ -1,20 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import { URLFOTO } from "../../config/url.servicio";
+
 /**
- * Generated class for the MomentPipe pipe.
+ * Generated class for the UrlfotoPipe pipe.
  *
  * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
  */
 @Pipe({
-  name: 'moment',
+  name: 'urlfoto',
 })
-export class MomentPipe implements PipeTransform {
+export class UrlfotoPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
   transform(value: string) {
-
-  	let m=moment(value).locale('day').fromNow();
-    return m;
+  	let url=URLFOTO+"storage/"+value;
+    return url;
   }
 }

@@ -1,32 +1,28 @@
 <ion-header>
   <ion-navbar align="center">
- <ion-title>
-      Sala
+   <ion-title>
+      Salas
     </ion-title>
-  </ion-navbar>
-
+</ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
-<ion-refresher (ionRefresh)="recargar($event)">
-     <ion-refresher-content></ion-refresher-content>
+    <ion-refresher (ionRefresh)="recargar($event)">
+         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>  
-<ion-grid  *ngFor="let sala of _sp.missalas" (click)="irSala(sala)">
-    <ion-row>
-
-<ion-card>
-  <ion-item>  
-    <h1>{{sala.titulo}}</h1>    
-  </ion-item>
-  <img src="img/advance-card-bttf.png">
-  <ion-card-content>
-  <p>{{sala.descripcion}}</p>
-  </ion-card-content>
-</ion-card>
-</ion-row>
-
-</ion-grid>
-
-<ion-fab bottom right> 
- <button ion-fab mini color="danger" (click)="addSala()"><ion-icon name="ios-add-outline"></ion-icon></button>
-</ion-fab>
+    <ion-grid  *ngFor="let sala of _sp.missalas" (click)="irSala(sala)">
+        <ion-row>
+          <ion-card>
+              <ion-item>  
+                <h1>{{sala.titulo}}</h1>    
+              </ion-item>
+                  <img src="">
+            <ion-card-content>
+              <p>{{sala.descripcion}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>  
+    </ion-grid>
+    <ion-fab bottom right> 
+       <button ion-fab mini color="danger" (click)="addSala()"><ion-icon name="ios-add-outline"></ion-icon></button>
+    </ion-fab>
 </ion-content>

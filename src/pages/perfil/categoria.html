@@ -1,24 +1,20 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title align="center">Categorias</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
   <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
+  </ion-refresher>
   <h6 align="center">Selecciona una o mas categorias de interes</h6>
-
 	<ion-list>
     <ion-item *ngFor="let cat of _fp.categoria; let i=index" >
       <ion-label>{{cat.nombre}}</ion-label>
       <ion-checkbox  (ionChange)="enviar(i)"></ion-checkbox>
     </ion-item>
   </ion-list>
-
   <div class="mt-2" align="center">
      <button ion-button block (click)="ca()">Enviar</button>
   </div>

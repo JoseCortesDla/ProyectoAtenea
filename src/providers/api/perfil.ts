@@ -17,7 +17,7 @@ token:string;
               private _us:ApiProvider
               ) {
   }
-re:[]=[];
+re:any[]=[];
 
    crear(ap:string,am:string,bio:string,lema:string,name:string,nick:string){
     
@@ -64,8 +64,9 @@ return this.http.get(url,{headers})
               this.usercat=data.categorias;
               this.userpre=data.pregunta;
             // this.categoria.push(...data.categorias.data);             
-             console.log(this.userInfo);  
-             console.log("esto es del perfil"+this.userpre);
+             console.log("info"+this.userInfo);  
+             console.log("pre"+this.userpre);  
+             console.log("cate"+this.usercat);  
             })
 }
 

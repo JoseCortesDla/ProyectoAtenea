@@ -2,7 +2,7 @@ import { Http,URLSearchParams } from '@angular/http';
 import { Component } from '@angular/core';
 import { NavController,ToastController } from 'ionic-angular';
 
-import { Refresher, reorderArray }  from "ionic-angular";
+import { Refresher, reorderArray ,LoadingController}  from "ionic-angular";
 import { ApiProvider} from  '../../providers/api/api';
 import { ForoProvider } from '../../providers/api/foro';
 import { MenuperfilPage } from '../menuperfil/menuperfil';
@@ -25,7 +25,9 @@ export class HomePage {
   				private _us:ApiProvider,          
           private http:Http,
           private _fp:ForoProvider,
-          private toast:ToastController) {
+          private toast:ToastController,
+          public loadingCtrl:LoadingController) {
+    this.presentLoadingDefault();
     this._us.midatos();
    this._us.prueba();  
    this._fp.categorias();
@@ -82,6 +84,19 @@ presentToast() {
   });
  toast.present();
 }
+
+presentLoadingDefault() {
+  let loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+
+  loading.present();
+
+  setTimeout(() => {
+    loading.dismiss();
+  }, 5000);
+}
+
 
 
 }

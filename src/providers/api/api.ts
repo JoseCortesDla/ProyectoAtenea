@@ -23,7 +23,7 @@ token:string;
   activo():boolean{      
    return (this.token)? true:false;
       }
- me:any[]=[];     
+ me:any={};
 midatos(){
      
     //Parametros
@@ -213,7 +213,7 @@ presentToast() {
   let toast = this.toastCtrl.create({
     message: 'usuarios cargados',
     duration: 3000,
-    position: 'bottom'
+    position: 'middle'
   });
     toast.onDidDismiss(() => {
     console.log('Dismissed toast');

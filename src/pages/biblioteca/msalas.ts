@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,ToastController,Refresher } from 'ionic-angular';
-import { SalaPage } from '../sala/sala';
+import { BibliotecaPage } from './biblioteca';
 import { ApiProvider} from  '../../providers/api/api';
 import { SalasProvider } from '../../providers/api/salas';
 
 @Component({
-  selector: 'page-salas',
-  templateUrl: 'salas.html'
+  selector: 'page-msalas',
+  templateUrl: 'msalas.html'
 })
-export class SalasPage {
+export class MsalasPage {
 
   constructor(
   		public navCtrl: NavController,
@@ -22,38 +22,8 @@ export class SalasPage {
     
   }
 
-  irSala(sala:any){
-  	this.navCtrl.push(SalaPage,{sala})
-  }
-
-
-  addSala() {
-    const prompt = this.alertCtrl.create({
-      title: 'Unirse a grupo',
-      inputs: [
-        {
-          name: 'codigo',
-          placeholder: 'Ingresa el codigo'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Unirse',
-          handler: data => {
-            console.log('Saved clicked');            
-           this._sp.unirse(data.codigo);
-          }
-        }                              
-      ]
-    });
-    prompt.present();
-    
+  irBiblioteca(sala:any){
+  	this.navCtrl.push(BibliotecaPage,{sala})
   }
 
 

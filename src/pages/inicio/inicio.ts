@@ -6,7 +6,7 @@ import { LoginPage} from '../login/login';
 import {ApiProvider} from  '../../providers/api/api';
 import {Storage} from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
-
+import { URL } from "../../config/url.servicio";
 
 @Component({
   selector: 'page-inicio',
@@ -14,7 +14,7 @@ import { LoadingController } from 'ionic-angular';
 }) 
 export class InicioPage {
  formularioUsuario: any;
-
+ 
   constructor(public navCtrl: NavController, 
               public fb: FormBuilder,
               private _us:ApiProvider,
@@ -22,6 +22,12 @@ export class InicioPage {
               public loadingCtrl: LoadingController)
   {
            this.buildForm();
+  }
+
+
+  reset(){
+    let reurl=URL+"password/reset";
+    return reurl;
   }
   
     presentLoading() {

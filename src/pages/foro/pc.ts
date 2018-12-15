@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,Refresher } from 'ionic-angular';
 import { ComentariosPage } from '../comentarios/comentarios';
-
+import { ForoProvider } from '../../providers/api/foro';
 @Component({
   selector: 'page-pc',
   templateUrl: 'pc.html',
 })
 export class PcPage {
 
-	cat:any={};
+	cate:any={};
   constructor(public navCtrl: NavController, 
-              public navParams: NavParams) {
- 	this.cat=this.navParams.get("cat");
+              public navParams: NavParams,
+              private _fp:ForoProvider) {
+ 	this.cate=this.navParams.get("cat");   
+  this._fp.porcategoria(this.cate.id);
   }
 
 mutantes:any[] = [
@@ -29,9 +31,15 @@ mutantes:any[] = [
     }
   ];
 
-  comentario() {
-    this.navCtrl.push(ComentariosPage)
+comentario(pregun:any,name:string){
+    console.log(name);
+    this.navCtrl.push(ComentariosPage,{pregun,name})
   }
-
+ recargar(refresher:Refresher){
+  setTimeout(()=>{
+  this._fp.porcategoria(this.cate.id);
+    refresher.complete();
+  },1500)
+}
  
 }

@@ -4,6 +4,7 @@ import { PublicacionSalaPage } from './publicacion-sala';
 import {ComentariosPage} from '../comentarios/comentarios';
 import { PerfilPage } from '../perfil/perfil';
 import { SalasProvider } from '../../providers/api/salas';
+import { TareasPage } from './tareas';
 //import { MomentPipe } from '../../pipes/moment/moment';
 /**
  * Generated class for the SalaPage page.
@@ -40,5 +41,7 @@ sala:any={};
   	this.navCtrl.push(ComentariosPage)
   }
 
- 
+   tarea(){
+     this.navCtrl.push(TareasPage,{'sala':this.sala})
+   }
 }

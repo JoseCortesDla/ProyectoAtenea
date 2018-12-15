@@ -21,6 +21,7 @@ export class MenuperfilPage {
               private _fp:ForoProvider,
               private _pp:PerfilProvider,
               private email:EmailComposer) {
+    this._pp.infous(_us.me.nick);
   }
 
   ionViewDidLoad() {
@@ -57,4 +58,7 @@ export class MenuperfilPage {
       //this.email.send(email);
       //this.email.open(email);
     }
+
+
+
 }
