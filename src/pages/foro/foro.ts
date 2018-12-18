@@ -26,7 +26,7 @@ export class ForoPage {
             ) {     
     this.pet='Preguntas';
     this._fp.allpre();
-    //this._fp.categorias();
+    this._fp.categorias();
     this._fp.mispre();
 //    this._fp.porcategoria(3);
   }

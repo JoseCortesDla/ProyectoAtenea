@@ -16,14 +16,14 @@ token:string;
               public storage:Storage,
               public alert:AlertController,
               private toastCtrl: ToastController) {
-              
   }
 
   //Verifica si la sesion esta activa
   activo():boolean{      
    return (this.token)? true:false;
       }
- me:any={};
+
+me:any={};
 midatos(){
      
     //Parametros
@@ -42,6 +42,7 @@ midatos(){
             })
 
 }
+
   //Login
    entrar(correo:string,password:string){
   	let data= new URLSearchParams();
@@ -155,6 +156,7 @@ midatos(){
             });
    
 }
+
 post:any[]=[];
 pruebaGet(){
 
@@ -171,9 +173,9 @@ headers.append('Authorization','Bearer '+this.token);
              //console.log(this.post);             
             })
         }
+
+
 po:any[]=[];
-
-
 //homehomehomehomehome
 prueba(){
 
@@ -208,6 +210,27 @@ let url="https://randomuser.me/api/?results=10";
         
 }
 
+
+catefa:any[]=[];
+
+miscategorias(){
+	console.log("entro");
+  let headers= new Headers();  
+  headers.append('Content-Type','application/json');  
+  headers.append('Authorization','Bearer '+this.token);
+
+let url=URL+"usuario/"+this.me.nick;
+
+return this.http.get(url,{headers})
+           .map( resp => resp.json() )
+            .subscribe( data=>{    
+              
+              this.catefa=data.categorias;
+              
+            // this.categoria.push(...data.categorias.data);             
+             console.log("info"+this.catefa);  
+            })
+}
 
 presentToast() {
   let toast = this.toastCtrl.create({

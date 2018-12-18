@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,ViewController,Refresher } from 'ionic-angular';
+import { NavController, NavParams,AlertController,ViewController,Refresher } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TabsPage} from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';

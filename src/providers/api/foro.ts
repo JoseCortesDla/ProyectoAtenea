@@ -62,8 +62,6 @@ presentToast(op:number) {
 }
 
 categoria:any[]=[];
-catefa:any[]=[];
-cafa:any[]=[];
 categorias(){
   let headers= new Headers();  
   headers.append('Content-Type','application/json');  
@@ -75,27 +73,17 @@ return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{    
               this.categoria=data.categorias;              
-              this.catefa=data.catfavs;
-            // this.categoria.push(...data.categorias.data);             
-
-            for (var i = this.categoria.length - 1; i >= 0; i--) {
-                 for (var i = this.catefa.length - 1; i >= 0; i--) {
-                   if (this.categoria[i].id==this.catefa[i]) {
-                     this.cafa.push(this.categoria[i].nombre);
-                   }
-                 }
-            }
-             console.log(this.cafa);             
+              console.log(this.categoria);
             })
 }
  
 pc:any[]=[];
-porcategoria(id:number){
+porcategoria(slug:string){
   let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
 
-let url=URL+"foro/categoria/"+id;
+let url=URL+"foro/categoria/"+slug;
 
 return this.http.get(url,{headers})
            .map( resp => resp.json() )

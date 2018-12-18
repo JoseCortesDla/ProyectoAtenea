@@ -4,14 +4,13 @@ import { PublicacionSalaPage } from './publicacion-sala';
 import {ComentariosPage} from '../comentarios/comentarios';
 import { PerfilPage } from '../perfil/perfil';
 import { SalasProvider } from '../../providers/api/salas';
-import { TareasPage } from './tareas';
-import {MiembrosPage } from './miembros';
+
 
 @Component({
-  selector: 'page-sala',
-  templateUrl: 'sala.html',
+  selector: 'page-miembros',
+  templateUrl: 'miembros.html',
 })
-export class SalaPage {
+export class MiembrosPage {
 sala:any={};
             constructor(public navCtrl: NavController, 
                         public navParams: NavParams,
@@ -21,20 +20,4 @@ sala:any={};
    console.log(navParams);
    this._sp.idesala(this.sala.id);
   }
-
-  perfil(pregun:any){
-    this.navCtrl.push(PerfilPage,{pregun})
-  }
-  
-  irPubli(sala:any) {
-    this.navCtrl.push(PublicacionSalaPage,{'sala':this.sala})
-  }
-
-  irComment(){
-  	this.navCtrl.push(ComentariosPage)
-  }
-
-   tarea(){
-     this.navCtrl.push(TareasPage,{'sala':this.sala})
-   }
 }

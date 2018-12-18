@@ -4,7 +4,7 @@ export { SalasPage } from './salas/salas';
 export { SalaPage } from './sala/sala';
 export { TareasPage } from './sala/tareas';
 export  {PublicacionSalaPage} from './sala/publicacion-sala';
-
+export { MiembrosPage } from './sala/miembros';
 
 export { ForoPage } from './foro/foro';
 export { PcPage } from './foro/pc';

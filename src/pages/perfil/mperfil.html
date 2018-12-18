@@ -12,8 +12,12 @@
 		<ion-row>
 		<div class="px-5 py-3" align="center">
 			<form (ngSubmit)="update()">
-			
+						<button class="add" ion-button icon-only>
 						<img class="im" [src]="_us.me.foto | urlfoto">
+						<ion-badge>
+							<ion-icon name="add"></ion-icon>
+						</ion-badge>
+						</button>
 				<br>
 					<button ion-button (click)="mostrar_camara()">
 						Camara

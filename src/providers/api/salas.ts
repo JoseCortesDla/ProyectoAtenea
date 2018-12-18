@@ -93,7 +93,7 @@ missalas:any[]=[];
 
 
    ideassala:any[]=[];
-   tareassala:any[]=[];
+   tareassala:any={};
     miembros:any[]=[];
      test:any[]=[];
   idesala(id:number){
@@ -107,13 +107,15 @@ missalas:any[]=[];
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             this.ideassala=data.idea;
+             this.ideassala=data.sala.idea;
+             this.miembros=data.sala.users;
              this.tareassala=data.tareas;
-             this.miembros=data.users;
-             this.test=data.tests;
-              //this.users.push(...data.allpreguntas.data);
+             this.test=data.sala.tests;
+              //this.tareassala.push(...data.tareas);
              console.log(this.ideassala);  
-             console.log(this.tareassala);
+             console.log("tareas"+this.tareassala);
+             console.log("miebros"+this.miembros);
+             console.log("test"+this.test);
 
             })
 

@@ -24,7 +24,9 @@ import {SalaPage,
         PcPage,
         MsalasPage,
         LoginPage,
-        PublicacionPage} from '../pages/index.paginas';
+        PublicacionPage,
+        TareasPage,
+    MiembrosPage} from '../pages/index.paginas';
 
 //Provedores de servicios
 import {  ApiProvider, 
@@ -62,7 +64,8 @@ import { IonicStorageModule } from '@ionic/storage';
     PerfilPage,
     AcercaPage,
     MsalasPage,
-    TareasPage
+    TareasPage,
+    MiembrosPage
 
   ],
   imports: [
@@ -93,7 +96,8 @@ import { IonicStorageModule } from '@ionic/storage';
     PcPage,
     CategoriaPage,
     MsalasPage,
-    TareasPage
+    TareasPage,
+    MiembrosPage
   ],
   providers: [
     StatusBar,

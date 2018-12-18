@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,Refresher } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, NavParams,AlertController,Refresher } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TabsPage} from '../tabs/tabs';
 import { InicioPage} from '../inicio/inicio';
-import {ApiProvider} from  '../../providers/api/api';
+import { ApiProvider} from  '../../providers/api/api';
 import { MperfilPage } from './mperfil';
 import { ForoProvider } from '../../providers/api/foro';
 import { PerfilProvider } from '../../providers/api/perfil';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
 import { MperfilPage } from '../perfil/mperfil';
 import { InicioPage } from '../inicio/inicio';
@@ -21,7 +21,7 @@ export class MenuperfilPage {
               private _fp:ForoProvider,
               private _pp:PerfilProvider,
               private email:EmailComposer) {
-    this._pp.infous(_us.me.nick);
+    this._us.miscategorias();
   }
 
   ionViewDidLoad() {

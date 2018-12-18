@@ -13,7 +13,7 @@ export class PcPage {
               public navParams: NavParams,
               private _fp:ForoProvider) {
  	this.cate=this.navParams.get("cat");   
-  this._fp.porcategoria(this.cate.id);
+  this._fp.porcategoria(this.cate.slug);
   }
 
 mutantes:any[] = [

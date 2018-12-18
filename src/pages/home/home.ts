@@ -30,7 +30,6 @@ export class HomePage {
     this.presentLoadingDefault();
     this._us.midatos();
    this._us.prueba();  
-   this._fp.categorias();
   }
 
 irPerfil(pregun:any){

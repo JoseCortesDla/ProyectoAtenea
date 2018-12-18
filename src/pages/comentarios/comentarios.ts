@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Refresher } from 'ionic-angular';
+import { NavController, NavParams,Refresher } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ForoProvider } from '../../providers/api/foro';
 import { ApiProvider } from '../../providers/api/api';
