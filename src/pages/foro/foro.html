@@ -29,7 +29,8 @@
   <ion-list *ngSwitchCase="'Preguntas'">
     <ion-item *ngFor="let pregun of _fp.preguntas" >
       <ion-avatar item-start>
-    <img [src]="pregun.user.foto | urlfoto" (click)=perfil(pregun.user.nick)>       
+          <img *ngIf="pregun.user.foto!=null" [src]="pregun.user.foto | urlfoto" (click)=perfil(pregun.user.nick)>       
+          <img *ngIf="pregun.user.foto==null" src="assets/imgs/user.png" (click)=perfil(pregun.user.nick)>       
       </ion-avatar>
      <I> <h2>{{pregun.user.name}}</h2></I>
       <p>{{pregun.categoria.nombre}}</p>

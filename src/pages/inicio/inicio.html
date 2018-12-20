@@ -3,7 +3,7 @@
 		<div class="container display-4 mt-5 pt-5" align="center">
 		Atenea
 		<br>
-		<ion-icon name="person" item-start></ion-icon>
+ 			<img src="assets/img/logo.png">
 		</div>
 		<div class="px-4 py-3">
 			<form [formGroup]="formularioUsuario" (ngSubmit)="irLogin()">
@@ -42,12 +42,12 @@
 			  		<button class="btn" ion-button round  [disabled]="!formularioUsuario.valid"  >Entrar</button>
 				</div>
 			</form>
-		</div>					
-		<div class="container h-25">
+			<div class="container px-4 py-3">
 			<div class="row">
 			<h6>Aun no tienes cuenta?&nbsp;&nbsp;&nbsp;</h6>
-		 <h6 (click)="irCrearCuenta()"  style="color:#488aff">Crear cuenta </h6>
+		 	<h6 (click)="irCrearCuenta()"  style="color:#488aff">Crear cuenta </h6>
 			</div>
-		</div>
+			</div>
+		</div>							
 	</div>
 </ion-content>

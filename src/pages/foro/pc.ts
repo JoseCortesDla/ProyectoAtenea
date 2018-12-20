@@ -31,9 +31,9 @@ mutantes:any[] = [
     }
   ];
 
-comentario(pregun:any,name:string){
+comentario(pregun:any,user:any){
     console.log(name);
-    this.navCtrl.push(ComentariosPage,{pregun,name})
+    this.navCtrl.push(ComentariosPage,{pregun,user})
   }
  recargar(refresher:Refresher){
   setTimeout(()=>{

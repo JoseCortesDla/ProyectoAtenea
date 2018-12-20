@@ -2,7 +2,7 @@
   <ion-navbar>
    
     <ion-buttons start>
-      <button ion-button icon-only (click)="menuPerfil()">
+      <button ion-button icon-only (click)="miembros()">
         <ion-icon name="people"></ion-icon>
       </button>
     </ion-buttons>
@@ -22,13 +22,15 @@
     <ion-refresher (ionRefresh)="recargar($event)">
      <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-    <div class=" container mt-2" *ngFor="let idea of _sp.ideassala">
+
     <ion-grid  >
-      <ion-row>
+      <ion-row *ngFor="let idea of _sp.ideassala">
       <ion-card >
         <ion-item>
           <ion-avatar item-start>
-            <img [src]="idea.user.foto" (click)="perfil(sala)">
+            <img *ngIf="idea.user.foto!=null && idea.estado=='false'" [src]="idea.user.foto | urlfoto" (click)=perfil(idea.user.nick)>       
+            <img *ngIf="idea.user.foto==null" src="assets/imgs/user.png" (click)=perfil(idea.user.nick)>                                               
+            <img *ngIf="idea.estado=='true'" src="assets/imgs/user.png"> 
           </ion-avatar>
           <h2 *ngIf="idea.estado=='false'">{{idea.user.name}}</h2>
           <h2 *ngIf="idea.estado=='true'" style="color:#FF0000">Anonimo</h2>
@@ -44,8 +46,10 @@
       </ion-card>
       </ion-row>
     </ion-grid>  
-    </div>
+     <ion-infinite-scroll (ionInfinite)="sig_pag($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     <ion-fab bottom right >
-       <button ion-fab mini (click)="irPubli(sala)"><ion-icon name="ios-create-outline"></ion-icon></button>
+       <button ion-fab mini color="danger" (click)="irPubli(sala)"><ion-icon name="ios-create-outline"></ion-icon></button>
     </ion-fab>
 </ion-content>

@@ -96,8 +96,10 @@ missalas:any[]=[];
    tareassala:any={};
     miembros:any[]=[];
      test:any[]=[];
+     paginfo:number=0;
   idesala(id:number){
         //Parametros
+  let promesa= new Promise((resolve,reject)=>{
   let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
@@ -107,18 +109,19 @@ missalas:any[]=[];
     return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{            
-             this.ideassala=data.sala.idea;
-             this.miembros=data.sala.users;
+             this.ideassala=data.idea;
+             this.miembros=data.users;
              this.tareassala=data.tareas;
-             this.test=data.sala.tests;
+             this.test=data.tests;
               //this.tareassala.push(...data.tareas);
              console.log(this.ideassala);  
              console.log("tareas"+this.tareassala);
              console.log("miebros"+this.miembros);
              console.log("test"+this.test);
-
+             this.paginfo+=1;
             })
-
+          });
+  return promesa;
    }
 
 

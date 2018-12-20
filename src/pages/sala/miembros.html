@@ -6,11 +6,13 @@
 <ion-content class="container bg-light">
 
         <ion-list>                          
-            <ion-item *ngFor="let user of _sp.miebros">              
+            <ion-item no-lines *ngFor="let user of _sp.miembros">              
             <ion-avatar item-start>
-                 <img [src]="user.foto | urlfoto" (click)="irPerfil(pregun)">
-                </ion-avatar>
+               <img *ngIf="user.foto!=null" [src]="user.foto | urlfoto" (click)=perfil(user.nick)>       
+               <img *ngIf="user.foto==null" src="assets/imgs/user.png" (click)=perfil(user.nick)>                              
+            </ion-avatar>
                 <p>{{user.name}}</p>
+                <p>{{user.nick}}</p>
             </ion-item>          
         </ion-list>           
         

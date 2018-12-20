@@ -10,7 +10,8 @@
   </ion-refresher>
 	<div align="center">
    <div class="bg-light">
-    <img class="im" [src]="_pp.userInfo.foto | urlfoto"> 
+      <img *ngIf="_pp.userInfo.foto!=null" [src]="_pp.userInfo.foto | urlfoto" class="im" (click)=perfil(_pp.userInfo.nick)>       
+      <img *ngIf="_pp.userInfo.foto==null" src="assets/imgs/user.png" class="im" (click)=perfil(_pp.userInfo.nick)>       
   </div>
     <h1>{{_pp.userInfo.name}}</h1>
     <p>
@@ -67,12 +68,13 @@
     </ion-list>
   </div>
   <div class="mt-2">
-    <ion-grid *ngFor="let pregunta of _pp.userpre" >
-      <ion-row>
+    <ion-grid>
+      <ion-row *ngFor="let pregunta of _pp.userpre" >
         <ion-card>
           <ion-item>
             <ion-avatar item-start>
-              <img src="assets/imgs/logo.png">    
+              <img *ngIf="_pp.userInfo.foto!=null" [src]="_pp.userInfo.foto | urlfoto" (click)=perfil(_pp.userInfo.nick)>       
+              <img *ngIf="_pp.userInfo.foto==null" src="assets/imgs/user.png" (click)=perfil(_pp.userInfo.nick)>       
             </ion-avatar>
             <h2 (click)="perfil()">{{_pp.userInfo.name}}</h2>
             <p>{{pregunta.created_at | moment}}</p>

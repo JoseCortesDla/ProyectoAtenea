@@ -24,6 +24,7 @@ formularioComen: any;
          this.preg=this.navParams.get("pregun");
          this.us=this.navParams.get("user");
          this._fp.repuestaspre(this.preg.slug);
+         console.log(this.preg);
          console.log(this.us);
          
 

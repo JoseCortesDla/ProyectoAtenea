@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,Platform } from 'ionic-angular';
-import { DocumentViewer } from '@ionic-native/document-viewer';
+import { DocumentViewer,DocumentViewerOptions } from '@ionic-native/document-viewer';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { ArchivoProvider  } from '../../providers/api/archivos';
@@ -30,30 +30,34 @@ fileTransfer: FileTransferObject = this.transfer.create();
     console.log('ionViewDidLoad BibliotecaPage');
   }	
 
-  /*
+  
   openLocalPdf(name:string){
   	const opcion: DocumentViewerOptions={
   		title:'Mi PDF'
   	};
   	this.document.viewDocument('assets/estadia.pdf','aplication/pdf',opcion);
-  }*/
+  }
 
 
-  downloadandpdf(){
-    console.log("entra pdf");
-  	//let path=null;
-  /*	if (this.platform.is('ios')) {
-  		path=this.file.dataDirectory;
+  download(){
+    
+  	let path=null;
+  	if (this.platform.is('ios')) {
+  		path=this.file.documentsDirectory;
   	}
   	else{
   		path=this.file.dataDirectory;
-  	}*/
-  	const url='http://www.oeidrus-morelos.gob.mx/compendio/files/Jiutepec.pdf';
+  	}
 
-      this.fileTransfer.download(url, this.file.dataDirectory + 'Jiutepec.pdf').then((entry) => {
-    console.log('download complete: ' + entry.toURL());
+    const transfer=this.transfer.create()
+  	const dirurl='http://www.oeidrus-morelos.gob.mx/compendio/files/Jiutepec.pdf';
+
+      transfer.download(dirurl,path+'Jiutepec.pdf').then((entry) => {
+    console.log("que pedo pdfjssjsj");
+    let url= entry.toURL();
+    this.document.viewDocument(url,'aplicacion/pdf',{});
   }, (error) => {
-    console.log("que pedo pdf");
+    console.log("que pedo pdf"+dirurl);
   });
 
   }

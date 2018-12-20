@@ -13,10 +13,11 @@
   <ion-list >
     <ion-item *ngFor="let pregun of _fp.pc" >
       <ion-avatar item-start>
-    <ion-icon name="person" md (click)=perfil(pregun.user.nick)></ion-icon>        
+        <img *ngIf="pregun.user.foto!=null" [src]="pregun.user.foto | urlfoto" (click)=perfil(pregun.user.nick)>       
+          <img *ngIf="pregun.user.foto==null" src="assets/imgs/user.png" (click)=perfil(pregun.user.nick)>           
       </ion-avatar>
      <I> <h2>{{pregun.user.name}}</h2></I>      
-      <p (click)="comentario(pregun,pregun.user.name)" align="left">{{pregun.descripcion}} </p>
+      <p (click)="comentario(pregun,pregun.user)" align="left">{{pregun.descripcion}} </p>
     </ion-item>
   </ion-list>
 </ion-content>

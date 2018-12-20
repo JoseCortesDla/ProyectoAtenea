@@ -1,17 +1,22 @@
 <ion-header>
-  <ion-navbar color="lila">
-     <h1 (ionRefresh)="recargar($event)">Atenea</h1>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="menuPerfil()">
-        <ion-icon name="contact"></ion-icon>
+  <ion-toolbar color="lila">
+      <ion-buttons start>
+      <button ion-button icon-only>
+      <img src="assets/img/logo.png">
       </button>
     </ion-buttons>
+       <h1>Atenea</h1>  
     <ion-buttons end>
+      <button ion-button icon-only>
+      <ion-icon name="contact" (click)="menuPerfil()"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!--<ion-buttons end>
       <button *ngIf="_us.activo()" ion-button icon-only (click)="_us.cerrar_sesion()">
        Salir
       </button>
-    </ion-buttons>
-  </ion-navbar>
+    </ion-buttons>--->
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="bg-light">  

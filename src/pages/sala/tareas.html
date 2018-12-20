@@ -10,12 +10,15 @@
 
 <ion-content class="container bg-light">
 
-    <ion-grid *ngFor="let tarea of sala.tareas" >
+    <ion-grid *ngFor="let tarea of _sp.tareassala" >
       <ion-row>
       <ion-card >
-     
+        <p>Entrega el {{tarea.entregar_at}}</p>
+        <ion-avatar>
+          <p>{{tarea.titulo}}</p>
+        </ion-avatar>
         <ion-card-content >
-          <p>{{tarea.descripcion}}</p>
+          <div style="width:100%; height:20%;" [innerHtml]="tarea.descripcion"></div>
         </ion-card-content>      
       </ion-card>
       </ion-row>

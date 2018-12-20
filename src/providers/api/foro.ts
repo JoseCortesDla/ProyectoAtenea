@@ -79,6 +79,7 @@ return this.http.get(url,{headers})
  
 pc:any[]=[];
 porcategoria(slug:string){
+  console.log(slug);
   let headers= new Headers();  
   headers.append('Accept','application/json');  
   headers.append('Authorization','Bearer '+this._us.token);
@@ -89,8 +90,8 @@ return this.http.get(url,{headers})
            .map( resp => resp.json() )
             .subscribe( data=>{    
                            
-            //  this.pc=data.data;
-            this.pc.push(...data.data);             
+              //this.pc=data;
+            this.pc.push(...data.pregunta);             
 
              console.log(this.pc);             
             })

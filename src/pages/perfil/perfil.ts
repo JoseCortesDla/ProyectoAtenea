@@ -32,10 +32,10 @@ export class PerfilPage {
   ) {
    
    // this.user=this.navParams.get("us");
-    this.date=moment()
+    //this.date=moment()
   }
 comentario(pregun:any,name:string){
-    this.navCtrl.push(ComentariosPage,{pregun,name})
+    this.navCtrl.push(ComentariosPage,{pregun,'user':this._pp.userInfo})
   }
  
 

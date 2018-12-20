@@ -12,7 +12,8 @@
         <ion-card>
           <ion-item>
             <ion-avatar item-start>
-              <img src="assets/imgs/logo.png">    
+              <img *ngIf="us.foto!=null" [src]="us.foto | urlfoto" (click)=perfil(us.nick)>       
+              <img *ngIf="us.foto==null" src="assets/imgs/user.png" (click)=perfil(us.nick)>         
             </ion-avatar>
             <h2  (click)=perfil(us.nick)>{{us.name}}</h2>
             <p>{{preg.created_at | moment}}</p>
@@ -28,7 +29,8 @@
   <ion-list >
     <ion-item *ngFor="let pregun of _fp.repregunta">
       <ion-avatar item-start>
-    <ion-icon name="person" (click)=perfil(pregun.user.nick) md></ion-icon>        
+          <img *ngIf="pregun.user.foto!=null" [src]="pregun.user.foto | urlfoto" (click)=perfil(pregun.user.nick)>       
+          <img *ngIf="pregun.user.foto==null" src="assets/imgs/user.png" (click)=perfil(pregun.user.nick)>          
       </ion-avatar>
       <h2>{{pregun.user.name}}</h2>
       <p>{{pregun.respuesta}}</p>

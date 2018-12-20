@@ -96,7 +96,7 @@ midatos(){
   cargar_storage(){
 
     let promesa=new Promise( (resolve,reject) =>{
-      if ( this.platform.is("cordova") ){
+      if ( this.platform.is('cordova') ){
         // dispositivo
         this.storage.ready()
               .then( ()=>{
@@ -204,7 +204,7 @@ let url="https://randomuser.me/api/?results=10";
              //this.post=data;
               //console.log(this.po);
               console.log(this.post);
-             this.presentToast();
+//             this.presentToast();
 
             })
         

@@ -4,7 +4,7 @@ import { PublicacionSalaPage } from './publicacion-sala';
 import {ComentariosPage} from '../comentarios/comentarios';
 import { PerfilPage } from '../perfil/perfil';
 import { SalasProvider } from '../../providers/api/salas';
-
+import { PerfilProvider } from '../../providers/api/perfil';
 
 @Component({
   selector: 'page-miembros',
@@ -15,9 +15,15 @@ sala:any={};
             constructor(public navCtrl: NavController, 
                         public navParams: NavParams,
                         private _sp:SalasProvider,
+                        private _pp:PerfilProvider,
                         ) {
     this.sala=this.navParams.get("sala");
    console.log(navParams);
-   this._sp.idesala(this.sala.id);
+  
+  }
+
+  perfil(nick:string){
+    this._pp.infous(nick);
+    this.navCtrl.push(PerfilPage)
   }
 }
