@@ -28,7 +28,8 @@
       <ion-card >
         <ion-item>
           <ion-avatar item-start>
-            <img *ngIf="idea.user.foto!=null && idea.estado=='false'" [src]="idea.user.foto | urlfoto" (click)=perfil(idea.user.nick)>       
+            <img *ngIf="idea.user.foto!=null && idea.estado=='false'" [src]="idea.user.foto | urlfoto" (click)=perfil(idea.user.nick)>     
+              <img *ngIf="idea.user.foto==null && idea.estado=='truee'"   src="assets/imgs/user.png">  
             <img *ngIf="idea.user.foto==null" src="assets/imgs/user.png" (click)=perfil(idea.user.nick)>                                               
             <img *ngIf="idea.estado=='true'" src="assets/imgs/user.png"> 
           </ion-avatar>
